@@ -322,19 +322,65 @@ nav{position:fixed;top:0;left:0;right:0;z-index:999;height:68px;display:flex;ali
 
 /* RESPONSIVE */
 @media(max-width:1000px){
-  nav{padding:0 1.5rem}.navl{display:none}.ham{display:flex}.nBtn{display:none}
+  nav{padding:0 1.25rem}.navl{display:none}.ham{display:flex}.nBtn{display:none}
   .pkg-grid,.why-grid,.testi-grid,.tour-grid,.hajj-steps,.offices-grid{grid-template-columns:1fr}
   .gtrav-grid,.hajj-intro,.about-grid{grid-template-columns:1fr}
   .hp-cols{grid-template-columns:1fr}
-  .hotel-cards-row,.hotel-cards-row4{grid-template-columns:1fr 1fr}
+  .hotel-cards-row,.hotel-cards-row4{grid-template-columns:1fr}
   .pt-header{grid-template-columns:1fr}
+  .pt-matrix{min-width:unset!important;width:100%}
   .ct-layout,.ai-layout{grid-template-columns:1fr}
   .ai-main{height:auto;position:static}
   .ct-l,.ct-r{padding:3rem 1.5rem}.ct-l{padding-top:5rem}
-  .sec{padding:4rem 1.5rem}.fi{grid-template-columns:1fr 1fr;gap:2rem}
+  .sec{padding:3rem 1.25rem}
+  .fi{grid-template-columns:1fr 1fr;gap:2rem}
+  .hotel-showcase{padding:1.5rem}
+  .hotel-showcase>div[style*="grid-template-columns:1fr 1fr"]{grid-template-columns:1fr!important}
+  .hajj-intro{padding:2rem 1.5rem}
+  .hajj-stat-n{font-size:2rem}
+  .hbtns{flex-direction:column;align-items:center}
+  .hbtns button{width:100%;max-width:320px}
+  .hero h1{font-size:clamp(2.2rem,8vw,4rem)}
+  .hero-content{padding:1.5rem 1.25rem 5rem}
+  .hero-contact{font-size:.75rem;text-align:center;flex-direction:column;gap:.3rem}
+  .ph-inner{padding:2.5rem 1.25rem 1.5rem}
+  .about-hero{padding:4rem 1.25rem}
+  .pt-incl{grid-template-columns:1fr!important}
+  .pt-footer{flex-direction:column;align-items:flex-start;gap:.75rem}
+  .hp-head{flex-direction:column;gap:1rem;padding:1.5rem}
+  .gtrav-pricing{grid-template-columns:1fr 1fr}
+  .ticker-item{padding:0 1.5rem}
+  .intro-title{font-size:clamp(2rem,7vw,3.5rem)}
+  .intro-bisml{font-size:1.8rem}
 }
 @media(max-width:600px){
   .hotel-cards-row,.hotel-cards-row4{grid-template-columns:1fr}
+  .logo-name{font-size:1rem}
+  .logo-name span{font-size:.62rem}
+  .fi{grid-template-columns:1fr}
+  .astat-grid{grid-template-columns:1fr 1fr}
+  .hajj-intro .astat-grid-like{grid-template-columns:1fr 1fr}
+  .pm-price{font-size:1.5rem!important}
+  .hcard-name{font-size:1.1rem}
+  .hs-title{font-size:1.1rem}
+  .sec-h{font-size:1.8rem}
+  .hero-sub{font-size:.85rem}
+  .about-hero h1{font-size:2rem}
+  .gtrav-hero-title{font-size:1.5rem}
+  .hajj-pkg .hp-head{padding:1.25rem}
+  .hajj-pkg .hp-col{padding:1rem}
+  .wa-fab{bottom:1.2rem;right:1.2rem;width:50px;height:50px;font-size:1.3rem}
+  .bPri,.bGold,.bOut{padding:.75rem 1.4rem;font-size:.7rem}
+  .pkg-card{padding:1.6rem 1.4rem}
+  .pkg-price{font-size:2rem}
+  .why-grid{grid-template-columns:1fr 1fr}
+  .ai-sidebar{padding:1.5rem}
+  .ai-msgs{padding:1.25rem}
+  .ai-inp{padding:1rem 1.25rem}
+  .ct-l,.ct-r{padding:2rem 1.25rem}
+  .ct-l{padding-top:4rem}
+  .office-card{padding:1.4rem}
+  .intro-logo{width:80px;height:80px}
 }
 </style>
 </head>
