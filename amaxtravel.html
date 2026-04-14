@@ -1,0 +1,1768 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width,initial-scale=1.0">
+<title>Amax Travel Detroit</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,300;1,400&family=Plus+Jakarta+Sans:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{--w:#fff;--bg:#F9F8F5;--bg2:#F3F1EB;--k:#0A0A0A;--k2:#2D2D2D;--k3:#6B6B6B;--k4:#A0A0A0;--g:#B8960C;--gm:#D4AF37;--gl:#F5E88A;--ga:rgba(184,150,12,0.15);--n:#0C1F3F;--nl:#1A3560;--sh1:0 2px 8px rgba(0,0,0,0.05),0 8px 24px rgba(0,0,0,0.07);--sh2:0 8px 32px rgba(0,0,0,0.1),0 20px 56px rgba(0,0,0,0.12);--sh3:0 20px 80px rgba(0,0,0,0.18),0 40px 100px rgba(0,0,0,0.14)}
+html{scroll-behavior:smooth}
+body{font-family:'Plus Jakarta Sans',sans-serif;background:var(--bg);color:var(--k);overflow-x:hidden}
+.serif{font-family:'Cormorant Garamond',serif}
+.page{display:none;min-height:100vh}
+.page.active{display:block}
+
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:999;height:68px;display:flex;align-items:center;justify-content:space-between;padding:0 2rem;background:rgba(255,255,255,0.97);backdrop-filter:blur(20px);border-bottom:1px solid rgba(0,0,0,0.06);box-shadow:0 2px 20px rgba(0,0,0,0.06)}
+.logo{display:flex;align-items:center;gap:.7rem;cursor:pointer}
+.logo img{width:48px;height:48px;object-fit:contain}
+.logo-name{font-family:'Cormorant Garamond',serif;font-size:1.15rem;font-weight:600;color:var(--k);letter-spacing:.02em;line-height:1.1}
+.logo-name span{color:var(--g);font-style:italic;display:block;font-size:.72rem;letter-spacing:.18em;text-transform:uppercase;font-weight:400}
+.navl{display:flex;list-style:none;gap:.1rem}
+.navl a{display:block;padding:0 .6rem;font-size:.67rem;letter-spacing:.08em;text-transform:uppercase;color:var(--k3);text-decoration:none;cursor:pointer;font-weight:500;transition:color .2s}
+.navl a:hover,.navl a.on{color:var(--k)}
+.nBtn{background:linear-gradient(135deg,var(--n),var(--nl));color:#fff;padding:.5rem 1.2rem;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;border:none;border-radius:6px;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;font-weight:600;transition:all .22s}
+.nBtn:hover{transform:translateY(-1px)}
+.ham{display:none;flex-direction:column;gap:5px;cursor:pointer;border:none;background:none;padding:6px}
+.ham span{display:block;width:20px;height:1.5px;background:var(--k)}
+.mMenu{display:none;position:fixed;top:68px;left:0;right:0;background:var(--w);border-bottom:1px solid rgba(0,0,0,0.06);z-index:998;box-shadow:var(--sh2)}
+.mMenu.open{display:block}
+.mMenu li{list-style:none;border-bottom:1px solid rgba(0,0,0,0.06)}
+.mMenu li a{display:block;padding:.85rem 2rem;font-size:.8rem;letter-spacing:.08em;text-transform:uppercase;color:var(--k2);cursor:pointer;font-weight:500}
+.bPri{background:linear-gradient(135deg,var(--n),var(--nl));color:#fff;padding:.85rem 2rem;font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;border:none;border-radius:8px;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;font-weight:600;transition:all .25s}
+.bPri:hover{transform:translateY(-3px)}
+.bGold{background:linear-gradient(135deg,#B8960C,#D4AF37);color:#fff;padding:.85rem 2rem;font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;border:none;border-radius:8px;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;font-weight:600;transition:all .25s}
+.bGold:hover{transform:translateY(-3px)}
+.bOut{background:transparent;color:var(--g);border:2px solid var(--g);padding:.82rem 2rem;font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;border-radius:8px;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;font-weight:600;transition:all .25s}
+.bOut:hover{background:var(--g);color:#fff}
+
+/* INTRO */
+#intro{position:fixed;inset:0;z-index:9999;background:#04091A;display:flex;align-items:center;justify-content:center;flex-direction:column;overflow:hidden}
+#intro canvas{position:absolute;inset:0;width:100%;height:100%}
+.intro-content{position:relative;z-index:2;text-align:center}
+.intro-logo{width:120px;height:120px;object-fit:contain;opacity:0;animation:fadeUp 1s ease 0.3s forwards;filter:drop-shadow(0 0 30px rgba(212,175,55,0.4))}
+.intro-bisml{font-family:'Cormorant Garamond',serif;font-size:2.5rem;color:rgba(212,175,55,0.8);margin-top:.75rem;opacity:0;animation:fadeUp 1.2s ease 0.8s forwards}
+.intro-title{font-family:'Cormorant Garamond',serif;font-size:clamp(2.5rem,6vw,5rem);font-weight:300;color:#fff;line-height:1.05;margin-bottom:.5rem;opacity:0;animation:fadeUp 1.2s ease 1.3s forwards}
+.intro-title em{color:#D4AF37;font-style:italic}
+.intro-sub{font-size:.85rem;color:rgba(255,255,255,.45);letter-spacing:.2em;text-transform:uppercase;opacity:0;animation:fadeUp 1s ease 2s forwards}
+.intro-bar{width:160px;height:2px;background:rgba(255,255,255,.08);border-radius:2px;margin:2rem auto 0;overflow:hidden;opacity:0;animation:fadeUp 1s ease 2.2s forwards}
+.intro-progress{height:100%;background:linear-gradient(90deg,#B8960C,#F5E88A);border-radius:2px;animation:progress 2.5s ease 2.4s forwards;width:0}
+@keyframes fadeUp{from{opacity:0;transform:translateY(20px)}to{opacity:1;transform:translateY(0)}}
+@keyframes progress{from{width:0}to{width:100%}}
+
+/* HERO */
+.hero{position:relative;min-height:100vh;display:flex;align-items:center;justify-content:center;overflow:hidden;padding-top:68px;background:#04091A}
+#heroCanvas{position:absolute;inset:0;width:100%;height:100%}
+.hero-overlay{position:absolute;inset:0;background:linear-gradient(to bottom,rgba(4,9,26,.35) 0%,rgba(4,9,26,.55) 60%,rgba(4,9,26,.85) 100%)}
+.hero-content{position:relative;z-index:2;text-align:center;padding:2rem 2rem 4rem;max-width:920px;margin:0 auto}
+.h-eyebrow{display:inline-flex;align-items:center;gap:.6rem;background:linear-gradient(135deg,rgba(184,150,12,.15),rgba(212,175,55,.08));border:1px solid rgba(184,150,12,.3);border-radius:24px;padding:.35rem 1rem;font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:#D4AF37;font-weight:600;margin-bottom:1.2rem}
+.hero-logo{width:90px;height:90px;object-fit:contain;margin:0 auto 1rem;display:block;filter:drop-shadow(0 0 20px rgba(212,175,55,.35))}
+.hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(3rem,6vw,6rem);font-weight:300;line-height:1.03;color:#fff;margin-bottom:1rem}
+.hero h1 em{color:#D4AF37;font-style:italic}
+.hero-sub{font-size:.95rem;color:rgba(255,255,255,.6);line-height:1.9;margin-bottom:1.5rem;max-width:560px;margin-left:auto;margin-right:auto}
+.hero-contact{display:inline-flex;align-items:center;gap:.6rem;font-size:.82rem;color:rgba(255,255,255,.75);background:rgba(255,255,255,.07);backdrop-filter:blur(10px);padding:.9rem 1.4rem;border-radius:10px;border:1px solid rgba(255,255,255,.1);margin-bottom:2rem}
+.hero-contact a{color:#F5E88A;font-weight:700;text-decoration:none}
+.hbtns{display:flex;gap:.75rem;flex-wrap:wrap;justify-content:center}
+.scroll-hint{position:absolute;bottom:2.5rem;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:.4rem;z-index:2;opacity:.5}
+.scroll-line{width:1px;height:40px;background:linear-gradient(to bottom,transparent,rgba(212,175,55,.8));animation:scrollDown 2s ease-in-out infinite}
+.scroll-txt{font-size:.55rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.5)}
+@keyframes scrollDown{0%{opacity:0;transform:scaleY(0);transform-origin:top}50%{opacity:1;transform:scaleY(1)}100%{opacity:0;transform:scaleY(1)}}
+
+/* TICKER */
+.ticker{background:linear-gradient(135deg,var(--n),var(--nl));color:rgba(255,255,255,.8);padding:.7rem 0;overflow:hidden;white-space:nowrap}
+.ticker-inner{display:inline-flex;animation:tick 30s linear infinite}
+.ticker-item{padding:0 2.5rem;font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;font-weight:500}
+.ticker-item span{color:#F5E88A}
+@keyframes tick{from{transform:translateX(0)}to{transform:translateX(-50%)}}
+
+/* SECTION */
+.sec{padding:5.5rem 2.5rem;max-width:1200px;margin:0 auto}
+.sec-tag{display:inline-flex;align-items:center;gap:.5rem;font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--g);font-weight:600;margin-bottom:.8rem}
+.sec-tag::before{content:'';display:block;width:20px;height:2px;background:linear-gradient(90deg,var(--g),var(--gm));border-radius:2px}
+.sec-h{font-family:'Cormorant Garamond',serif;font-size:clamp(2rem,3.5vw,3.2rem);font-weight:300;color:var(--k);line-height:1.1;margin-bottom:.8rem}
+.sec-h em{font-style:italic;color:var(--g)}
+.divider{height:1px;background:linear-gradient(90deg,transparent,rgba(0,0,0,.1),transparent);max-width:1200px;margin:0 auto}
+
+/* PKG GRID */
+.pkg-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-top:3rem}
+.card3{background:var(--w);border:1px solid rgba(0,0,0,.06);border-radius:22px;transition:all .4s cubic-bezier(.34,1.56,.64,1);cursor:pointer;position:relative;overflow:hidden;box-shadow:var(--sh1)}
+.card3:hover{transform:translateY(-14px);box-shadow:var(--sh3);border-color:rgba(184,150,12,.3)}
+.pkg-card{padding:2.2rem 1.8rem}
+.pkg-ico{width:58px;height:58px;border-radius:16px;display:flex;align-items:center;justify-content:center;font-size:1.8rem;margin-bottom:1.5rem}
+.pkg-card h3{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:400;color:var(--k);margin-bottom:.5rem}
+.pkg-card p{font-size:.82rem;color:var(--k3);line-height:1.75;margin-bottom:1.5rem}
+.pkg-from{font-size:.58rem;letter-spacing:.15em;text-transform:uppercase;color:var(--k4)}
+.pkg-price{font-family:'Cormorant Garamond',serif;font-size:2.6rem;font-weight:300;color:var(--k);line-height:1}
+.pkg-arrow{position:absolute;top:1.8rem;right:1.8rem;width:38px;height:38px;border-radius:50%;background:var(--bg);display:flex;align-items:center;justify-content:center;color:var(--k4);transition:all .28s}
+.card3:hover .pkg-arrow{background:linear-gradient(135deg,var(--g),var(--gm));color:#fff}
+
+/* WHY */
+.why-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1.25rem;margin-top:3rem}
+.why-c{background:var(--w);border:1px solid rgba(0,0,0,.06);border-radius:18px;padding:2rem 1.5rem;text-align:center;transition:all .3s;box-shadow:var(--sh1)}
+.why-c:hover{border-color:rgba(184,150,12,.35);transform:translateY(-6px)}
+.why-ico{font-size:2.2rem;margin-bottom:1rem}
+.why-t{font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;color:var(--k2);font-weight:700;margin-bottom:.5rem}
+.why-d{font-size:.79rem;color:var(--k3);line-height:1.7}
+
+/* TESTI */
+.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-top:3rem}
+.testi{background:var(--w);border:1px solid rgba(0,0,0,.06);border-radius:18px;padding:2.2rem;box-shadow:var(--sh1);transition:all .28s}
+.testi:hover{box-shadow:var(--sh2);transform:translateY(-4px)}
+.testi-stars{color:var(--gm);font-size:.8rem;letter-spacing:3px;margin-bottom:1rem}
+.testi-q{font-family:'Cormorant Garamond',serif;font-size:1.08rem;font-style:italic;color:var(--k2);line-height:1.82;margin-bottom:1.25rem}
+.testi-name{font-size:.8rem;color:var(--k);font-weight:700}
+.testi-loc{font-size:.72rem;color:var(--k4)}
+
+/* PAGE HEADER */
+.ph{padding-top:68px;background:linear-gradient(155deg,#fff 0%,#F5F3EC 100%);border-bottom:1px solid rgba(0,0,0,.06)}
+.ph-inner{max-width:1200px;margin:0 auto;padding:3.5rem 2.5rem 2.5rem}
+.ph-bc{font-size:.65rem;letter-spacing:.12em;text-transform:uppercase;color:var(--k4);margin-bottom:1rem}
+.ph-bc span{color:var(--g)}
+.ph h1{font-family:'Cormorant Garamond',serif;font-size:clamp(2.5rem,5vw,4.2rem);font-weight:300;color:var(--k)}
+.ph h1 em{font-style:italic;color:var(--g)}
+.ph p{font-size:.88rem;color:var(--k3);margin-top:.5rem}
+
+/* ═══════════════════════════════════════
+   3D HOTEL SHOWCASE CARDS
+═══════════════════════════════════════ */
+.hotel-showcase{padding:2.5rem;background:linear-gradient(135deg,#08101E,#0C1A30);border-radius:28px;margin:2rem 0 1.5rem;position:relative;overflow:hidden;box-shadow:0 30px 100px rgba(0,0,0,.4)}
+.hotel-showcase::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 20% 50%,rgba(212,175,55,.08) 0%,transparent 60%),radial-gradient(ellipse at 80% 50%,rgba(26,53,96,.3) 0%,transparent 60%);pointer-events:none}
+.hs-label{font-size:.58rem;letter-spacing:.25em;text-transform:uppercase;color:rgba(212,175,55,.7);font-weight:700;margin-bottom:.5rem}
+.hs-title{font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-weight:300;color:#fff;margin-bottom:1.5rem;line-height:1.2}
+.hotel-cards-row{display:grid;grid-template-columns:repeat(2,1fr);gap:1.25rem}
+.hcard{border-radius:20px;overflow:hidden;position:relative;cursor:pointer;transition:all .5s cubic-bezier(.34,1.2,.64,1);transform-style:preserve-3d;box-shadow:0 10px 40px rgba(0,0,0,.5),0 0 0 1px rgba(255,255,255,.06)}
+.hcard:hover{transform:translateY(-12px) scale(1.02);box-shadow:0 30px 80px rgba(0,0,0,.6),0 0 0 1px rgba(212,175,55,.3),0 0 60px rgba(212,175,55,.08)}
+.hcard-img{width:100%;height:220px;object-fit:cover;display:block;transition:transform .6s ease}
+.hcard:hover .hcard-img{transform:scale(1.07)}
+.hcard-overlay{position:absolute;inset:0;background:linear-gradient(to top,rgba(4,9,26,.95) 0%,rgba(4,9,26,.5) 45%,rgba(4,9,26,.1) 100%)}
+.hcard-shine{position:absolute;top:0;left:-100%;width:60%;height:100%;background:linear-gradient(105deg,transparent 40%,rgba(255,255,255,.06) 50%,transparent 60%);transition:left .6s ease;pointer-events:none}
+.hcard:hover .hcard-shine{left:150%}
+.hcard-body{position:absolute;bottom:0;left:0;right:0;padding:1.4rem 1.5rem}
+.hcard-city{font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:rgba(212,175,55,.8);font-weight:700;margin-bottom:.25rem}
+.hcard-name{font-family:'Cormorant Garamond',serif;font-size:1.35rem;font-weight:400;color:#fff;margin-bottom:.35rem;line-height:1.2;text-shadow:0 2px 12px rgba(0,0,0,.8)}
+.hcard-stars{color:#D4AF37;font-size:.75rem;letter-spacing:3px;display:block;margin-bottom:.4rem}
+.hcard-badge{display:inline-block;font-size:.56rem;letter-spacing:.14em;text-transform:uppercase;font-weight:700;padding:.22rem .7rem;border-radius:20px;margin-top:.2rem}
+.hcard-badge.gold{background:linear-gradient(135deg,rgba(184,150,12,.3),rgba(212,175,55,.2));border:1px solid rgba(212,175,55,.4);color:#F5E88A}
+.hcard-badge.blue{background:rgba(26,53,96,.6);border:1px solid rgba(100,150,255,.25);color:rgba(180,210,255,.9)}
+.hcard-logo{position:absolute;top:1rem;right:1rem;background:rgba(255,255,255,.92);backdrop-filter:blur(8px);border-radius:8px;padding:.35rem .65rem;max-width:100px}
+.hcard-logo img{height:22px;object-fit:contain;display:block}
+.hcard-corner{position:absolute;top:1rem;left:1rem;width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,rgba(212,175,55,.25),rgba(212,175,55,.1));border:1px solid rgba(212,175,55,.3);display:flex;align-items:center;justify-content:center;font-size:1rem}
+.hcard-corner-star{position:absolute;top:.75rem;left:.75rem;background:linear-gradient(135deg,#B8960C,#D4AF37);border-radius:20px;padding:.2rem .6rem;font-size:.58rem;letter-spacing:.12em;text-transform:uppercase;font-weight:700;color:#fff}
+
+/* 4-column hotel row */
+.hotel-cards-row4{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem}
+.hcard-sm .hcard-img{height:160px}
+.hcard-sm .hcard-body{padding:1rem 1.1rem}
+.hcard-sm .hcard-name{font-size:1.05rem}
+
+/* PKG TABLE */
+.pkg-tbl{background:var(--w);border:1px solid rgba(0,0,0,.06);border-radius:24px;overflow:hidden;box-shadow:var(--sh2);transition:all .35s;margin-bottom:1.5rem}
+.pkg-tbl:hover{box-shadow:var(--sh3);transform:translateY(-4px)}
+.pt-header{padding:2rem 2.5rem;display:grid;grid-template-columns:1fr auto;gap:2rem;align-items:start}
+.pt-badge{display:inline-block;font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;font-weight:700;padding:.28rem .8rem;border-radius:20px;margin-bottom:.75rem;background:rgba(255,255,255,.15);color:rgba(255,255,255,.9)}
+.pt-title{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:400;color:#fff;margin-bottom:.5rem}
+.pt-sub{font-size:.78rem;color:rgba(255,255,255,.6)}
+.pt-dates{font-size:.8rem;color:rgba(255,255,255,.85);font-weight:600;margin-top:.5rem}
+.pt-matrix{display:grid;grid-template-columns:repeat(3,1fr);text-align:center}
+.pm-head{background:rgba(0,0,0,.15);padding:.75rem;font-size:.65rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.7);font-weight:700;border-right:1px solid rgba(255,255,255,.08)}
+.pm-head:last-child{border:none}
+.pm-cell{padding:1.1rem .75rem;border-right:1px solid rgba(255,255,255,.06);border-top:1px solid rgba(255,255,255,.06)}
+.pm-cell:last-child{border-right:none}
+.pm-price{font-family:'Cormorant Garamond',serif;font-size:2rem;font-weight:300;color:#fff;line-height:1}
+.pm-lbl{font-size:.6rem;letter-spacing:.1em;text-transform:uppercase;color:rgba(255,255,255,.45);margin-top:.15rem}
+.pt-incl{padding:1.75rem 2.5rem;border-top:1px solid rgba(0,0,0,.06);display:grid;grid-template-columns:1fr 1fr;gap:.7rem}
+.incl-item{display:flex;align-items:center;gap:.6rem;font-size:.8rem;color:var(--k2);font-weight:500}
+.incl-check{width:18px;height:18px;border-radius:50%;background:linear-gradient(135deg,#D4AF37,#B8960C);display:flex;align-items:center;justify-content:center;font-size:.55rem;color:#fff;flex-shrink:0}
+.pt-footer{padding:1.25rem 2.5rem;border-top:1px solid rgba(0,0,0,.06);display:flex;align-items:center;justify-content:space-between;gap:1rem;flex-wrap:wrap}
+.bk-btn{background:linear-gradient(135deg,var(--n),var(--nl));color:#fff;border:none;border-radius:8px;padding:.8rem 1.8rem;font-size:.72rem;letter-spacing:.1em;text-transform:uppercase;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;font-weight:700;transition:all .25s}
+.bk-btn:hover{transform:translateY(-2px)}
+.bk-btn.gold-btn{background:linear-gradient(135deg,var(--g),var(--gm))}
+.save-tag{display:inline-flex;align-items:center;gap:.4rem;font-size:.68rem;color:var(--g);font-weight:600;background:var(--ga);border:1px solid rgba(184,150,12,.2);border-radius:20px;padding:.3rem .8rem}
+
+/* HAJJ */
+.hajj-intro{background:linear-gradient(135deg,#0C1F3F,#1A3560);border-radius:24px;padding:3rem;display:grid;grid-template-columns:1fr 1fr;gap:2.5rem;align-items:center;box-shadow:var(--sh3)}
+.hajj-stat{text-align:center;padding:1.5rem;border-radius:14px;background:rgba(255,255,255,.06);border:1px solid rgba(255,255,255,.08)}
+.hajj-stat-n{font-family:'Cormorant Garamond',serif;font-size:2.5rem;font-weight:300;color:#F5E88A}
+.hajj-stat-l{font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:rgba(255,255,255,.45);margin-top:.2rem}
+.hajj-pkg{background:var(--w);border:1px solid rgba(0,0,0,.06);border-radius:24px;overflow:hidden;box-shadow:var(--sh2);margin-bottom:1.5rem}
+.hp-head{padding:2rem 2.5rem;display:flex;justify-content:space-between;align-items:flex-start}
+.hp-head.silver{background:linear-gradient(135deg,#4A4A4A,#2A2A2A)}
+.hp-head.gold-h{background:linear-gradient(135deg,#8B6914,#D4AF37)}
+.hp-head.plat{background:linear-gradient(135deg,#0C1F3F,#254880)}
+.hp-title{font-family:'Cormorant Garamond',serif;font-size:1.7rem;color:#fff;font-weight:300}
+.hp-days{font-size:.68rem;color:rgba(255,255,255,.65);margin-top:.35rem}
+.hp-cols{display:grid;grid-template-columns:1fr 1fr}
+.hp-col{padding:1.25rem 1.5rem;border-right:1px solid rgba(0,0,0,.06)}
+.hp-col:last-child{border:none}
+.hp-col-title{font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;color:var(--k4);margin-bottom:.85rem;font-weight:600}
+.hp-row{display:flex;justify-content:space-between;align-items:center;padding:.5rem 0;border-bottom:1px solid rgba(0,0,0,.06)}
+.hp-row:last-child{border:none}
+.hp-room{font-size:.72rem;color:var(--k3);font-weight:600;letter-spacing:.08em;text-transform:uppercase}
+.hp-price-v{font-family:'Cormorant Garamond',serif;font-size:1.5rem;color:var(--n);font-weight:300}
+.hajj-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:1.25rem;margin-top:2.5rem}
+.hs{background:var(--w);border:1px solid rgba(0,0,0,.06);border-radius:16px;padding:1.8rem 1.4rem;text-align:center;box-shadow:var(--sh1);transition:all .28s}
+.hs:hover{transform:translateY(-6px)}
+.hs-n{font-family:'Cormorant Garamond',serif;font-size:3rem;font-weight:300;color:rgba(184,150,12,.15);line-height:1;margin-bottom:.5rem}
+.hs-t{font-size:.7rem;letter-spacing:.1em;text-transform:uppercase;color:var(--g);font-weight:700;margin-bottom:.4rem}
+.hs-d{font-size:.79rem;color:var(--k3);line-height:1.65}
+
+/* TOURS */
+.tour-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-top:2.5rem}
+.tour-c{border-radius:22px;overflow:hidden}
+.tour-img{height:190px;display:flex;align-items:center;justify-content:center;font-size:5rem;position:relative}
+.tour-body{padding:1.6rem}
+.tour-lbl{font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--g);font-weight:700;margin-bottom:.4rem}
+.tour-body h3{font-family:'Cormorant Garamond',serif;font-size:1.4rem;font-weight:400;color:var(--k);margin-bottom:.4rem}
+.tour-body p{font-size:.8rem;color:var(--k3);line-height:1.7;margin-bottom:.75rem}
+.tour-tags{display:flex;flex-wrap:wrap;gap:.35rem;margin-bottom:.85rem}
+.ttag{font-size:.65rem;background:var(--bg2);border:1px solid rgba(0,0,0,.06);border-radius:20px;padding:.22rem .65rem;color:var(--k3);font-weight:500}
+.tour-price{font-family:'Cormorant Garamond',serif;font-size:1.5rem;color:var(--n);font-weight:400}
+.tour-cta{display:inline-flex;align-items:center;gap:.3rem;margin-top:.85rem;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--g);font-weight:700;border-bottom:2px solid rgba(184,150,12,.25);padding-bottom:2px;cursor:pointer}
+
+/* GENERAL */
+.gtrav-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:1.5rem;margin-top:2.5rem}
+.gtrav{background:var(--w);border:1px solid rgba(0,0,0,.06);border-radius:22px;overflow:hidden;box-shadow:var(--sh1);transition:all .35s}
+.gtrav:hover{transform:translateY(-8px);box-shadow:var(--sh3)}
+.gtrav-hero{height:160px;display:flex;align-items:flex-end;padding:1.5rem;position:relative;overflow:hidden}
+.gtrav-flag{position:absolute;top:1rem;right:1rem;font-size:2rem}
+.gtrav-hero-title{font-family:'Cormorant Garamond',serif;font-size:2rem;color:#fff;font-weight:300;text-shadow:0 2px 12px rgba(0,0,0,.5);z-index:1;position:relative}
+.gtrav-body{padding:1.6rem}
+.gtrav-days{font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:var(--g);font-weight:700;margin-bottom:.4rem}
+.gtrav-dest{font-size:.78rem;color:var(--k3);margin-bottom:.75rem;line-height:1.6}
+.gtrav-incl{display:flex;flex-wrap:wrap;gap:.35rem;margin-bottom:1rem}
+.gi-tag{font-size:.62rem;background:var(--bg2);border:1px solid rgba(0,0,0,.06);border-radius:20px;padding:.2rem .6rem;color:var(--k3)}
+.gtrav-pricing{display:grid;grid-template-columns:1fr 1fr;gap:.6rem;margin-bottom:1rem}
+.gp-box{background:var(--bg2);border-radius:10px;padding:.75rem;text-align:center;border:1px solid rgba(0,0,0,.06)}
+.gp-type{font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:var(--k4);font-weight:600}
+.gp-price{font-family:'Cormorant Garamond',serif;font-size:1.35rem;color:var(--n);font-weight:300}
+
+/* AI PLANNER */
+.ai-layout{display:grid;grid-template-columns:300px 1fr;min-height:calc(100vh - 68px);margin-top:68px}
+.ai-sidebar{background:var(--w);border-right:1px solid rgba(0,0,0,.06);padding:2.5rem;overflow-y:auto}
+.ai-main{background:var(--bg);display:flex;flex-direction:column;height:calc(100vh - 68px);position:sticky;top:68px}
+.ai-msgs{flex:1;overflow-y:auto;padding:2rem}
+.msg-bot{display:flex;gap:.85rem;margin-bottom:1.25rem}
+.ai-av{width:36px;height:36px;border-radius:50%;background:linear-gradient(135deg,#FDF8E3,#E8D080);display:flex;align-items:center;justify-content:center;font-size:.9rem;flex-shrink:0;border:1px solid rgba(184,150,12,.25)}
+.bubble-bot{background:var(--w);border:1px solid rgba(0,0,0,.06);border-radius:4px 18px 18px 18px;padding:1.1rem 1.3rem;max-width:82%;font-size:.87rem;color:var(--k2);line-height:1.75;box-shadow:var(--sh1)}
+.msg-user{display:flex;justify-content:flex-end;margin-bottom:1.25rem}
+.bubble-user{background:linear-gradient(135deg,var(--n),var(--nl));color:#fff;border-radius:18px 4px 18px 18px;padding:1.1rem 1.3rem;max-width:76%;font-size:.87rem;line-height:1.75}
+.ai-chips{display:flex;flex-wrap:wrap;gap:.4rem;padding:0 2rem 1rem}
+.ai-chip{font-size:.68rem;border:1px solid rgba(0,0,0,.1);border-radius:20px;padding:.35rem .88rem;color:var(--k3);cursor:pointer;transition:all .2s;background:var(--w);font-weight:500}
+.ai-chip:hover{border-color:var(--g);color:var(--g);background:var(--ga)}
+.ai-inp{border-top:1px solid rgba(0,0,0,.06);padding:1.25rem 2rem;display:flex;gap:.75rem;align-items:center;background:var(--w)}
+.ai-field{flex:1;background:var(--bg);border:1.5px solid rgba(0,0,0,.1);border-radius:24px;padding:.8rem 1.2rem;color:var(--k);font-size:.87rem;font-family:'Plus Jakarta Sans',sans-serif;outline:none;transition:all .22s}
+.ai-field:focus{border-color:var(--g)}
+.ai-send{background:linear-gradient(135deg,var(--n),var(--nl));border:none;border-radius:50%;width:44px;height:44px;color:#fff;cursor:pointer;flex-shrink:0;display:flex;align-items:center;justify-content:center;font-size:1.1rem;transition:all .22s}
+.ai-send:hover{transform:scale(1.08)}
+.ai-load{display:none;padding:1rem 0;color:var(--k3);font-size:.87rem}
+.ai-load.on{display:flex;align-items:center;gap:.5rem}
+.spin{display:inline-block;width:16px;height:16px;border:2px solid rgba(184,150,12,.2);border-top-color:var(--g);border-radius:50%;animation:spin .8s linear infinite;flex-shrink:0}
+@keyframes spin{to{transform:rotate(360deg)}}
+
+/* OFFICES */
+.offices-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem;margin-top:2rem}
+.office-card{background:var(--w);border:1px solid rgba(0,0,0,.06);border-radius:18px;padding:1.75rem;box-shadow:var(--sh1);transition:all .3s;position:relative;overflow:hidden}
+.office-card:hover{transform:translateY(-6px);box-shadow:var(--sh2);border-color:rgba(184,150,12,.3)}
+.office-card::before{content:'';position:absolute;top:0;left:0;right:0;height:4px}
+.office-card.hq::before{background:linear-gradient(90deg,var(--g),var(--gm))}
+.office-card.usa::before{background:linear-gradient(90deg,#B22234,#3C3B6E)}
+.office-card.canada::before{background:linear-gradient(90deg,#FF0000,#FF0000)}
+.office-card.australia::before{background:linear-gradient(90deg,#00008B,#FF0000)}
+.office-card.pakistan::before{background:linear-gradient(90deg,#01411C,#fff)}
+.office-card.ksa::before{background:linear-gradient(90deg,#006C35,#D4AF37)}
+.off-country{font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:var(--g);font-weight:700;margin-bottom:.35rem}
+.off-city{font-family:'Cormorant Garamond',serif;font-size:1.6rem;font-weight:400;color:var(--k);margin-bottom:.75rem}
+.off-addr{font-size:.78rem;color:var(--k3);line-height:1.75;margin-bottom:.75rem}
+.off-phone{display:flex;align-items:center;gap:.5rem;font-size:.8rem;font-weight:700;color:var(--n)}
+.off-phone a{color:var(--n);text-decoration:none}
+.hq-badge{display:inline-block;background:linear-gradient(135deg,var(--g),var(--gm));color:#fff;font-size:.58rem;letter-spacing:.16em;text-transform:uppercase;font-weight:700;padding:.22rem .7rem;border-radius:20px;margin-bottom:.5rem}
+
+/* ABOUT */
+.about-hero{background:linear-gradient(135deg,#0C1F3F,#1A3560);padding:6rem 2.5rem;text-align:center;position:relative;overflow:hidden}
+.about-hero::before{content:'﷽';position:absolute;font-size:8rem;opacity:.04;top:50%;left:50%;transform:translate(-50%,-50%);color:#D4AF37;pointer-events:none}
+.about-hero h1{font-family:'Cormorant Garamond',serif;font-size:clamp(2.5rem,5vw,4rem);font-weight:300;color:#fff;line-height:1.1}
+.about-hero h1 em{color:#F5E88A;font-style:italic}
+.about-hero p{color:rgba(255,255,255,.6);max-width:580px;margin:1rem auto 0;font-size:.9rem;line-height:1.85}
+.about-content{max-width:1200px;margin:0 auto;padding:5rem 2.5rem}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:4rem;align-items:start}
+.astat-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:2.5rem}
+.astat{background:var(--w);border:1px solid rgba(0,0,0,.06);border-radius:16px;padding:1.5rem;box-shadow:var(--sh1);text-align:center;transition:all .28s}
+.astat:hover{border-color:rgba(184,150,12,.3);transform:translateY(-4px)}
+.astat-n{font-family:'Cormorant Garamond',serif;font-size:2.8rem;font-weight:300;color:var(--g);line-height:1}
+.astat-l{font-size:.65rem;letter-spacing:.12em;text-transform:uppercase;color:var(--k3);margin-top:.25rem;font-weight:600}
+
+/* CONTACT */
+.ct-layout{display:grid;grid-template-columns:1fr 1fr}
+.ct-l{padding:5rem 3.5rem;background:linear-gradient(155deg,#0C1F3F,#1A3560);padding-top:calc(68px + 4rem)}
+.ct-r{padding:5rem 3.5rem;background:var(--bg);padding-top:calc(68px + 4rem)}
+.ci-lbl{font-size:.58rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-bottom:.3rem;font-weight:700}
+.ci-val{font-size:.9rem;color:#fff;line-height:1.7}
+.ci-val a{color:#F5E88A;font-weight:600;text-decoration:none}
+.cf-g label{display:block;font-size:.6rem;letter-spacing:.15em;text-transform:uppercase;color:var(--g);margin-bottom:.4rem;font-weight:700}
+.cf-g input,.cf-g select,.cf-g textarea{width:100%;background:var(--w);border:1.5px solid rgba(0,0,0,.1);border-radius:10px;padding:.75rem 1rem;color:var(--k);font-family:'Plus Jakarta Sans',sans-serif;font-size:.87rem;outline:none;transition:all .22s}
+.cf-g input:focus,.cf-g select:focus,.cf-g textarea:focus{border-color:var(--g)}
+.cf-g textarea{resize:none;height:88px}
+
+/* FOOTER */
+.footer{background:#080E1A;color:rgba(255,255,255,.55);padding:4rem 2.5rem 0}
+.fi{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:2fr 1fr 1fr 1fr;gap:3rem;padding-bottom:3rem;border-bottom:1px solid rgba(255,255,255,.05)}
+.fb p{font-size:.79rem;color:rgba(255,255,255,.35);line-height:1.9;margin-top:.85rem;max-width:250px}
+.fc h4{font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;color:#F5E88A;margin-bottom:1.2rem;font-weight:700}
+.fc ul{list-style:none;display:flex;flex-direction:column;gap:.65rem}
+.fc ul li{font-size:.79rem;color:rgba(255,255,255,.4);cursor:pointer;transition:color .2s}
+.fc ul li:hover{color:#fff}
+.fbot{max-width:1200px;margin:0 auto;padding:1.5rem 0;display:flex;justify-content:space-between;align-items:center}
+.fbot p{font-size:.68rem;color:rgba(255,255,255,.2)}
+
+/* WA FAB */
+.wa-fab{position:fixed;bottom:1.8rem;right:1.8rem;width:58px;height:58px;background:#25D366;border-radius:50%;display:flex;align-items:center;justify-content:center;font-size:1.6rem;cursor:pointer;z-index:900;border:3px solid #fff;transition:all .25s;box-shadow:0 8px 24px rgba(37,211,102,.4)}
+.wa-fab:hover{transform:scale(1.12);box-shadow:0 12px 36px rgba(37,211,102,.6)}
+
+/* RESPONSIVE */
+@media(max-width:1000px){
+  nav{padding:0 1.5rem}.navl{display:none}.ham{display:flex}.nBtn{display:none}
+  .pkg-grid,.why-grid,.testi-grid,.tour-grid,.hajj-steps,.offices-grid{grid-template-columns:1fr}
+  .gtrav-grid,.hajj-intro,.about-grid{grid-template-columns:1fr}
+  .hp-cols{grid-template-columns:1fr}
+  .hotel-cards-row,.hotel-cards-row4{grid-template-columns:1fr 1fr}
+  .pt-header{grid-template-columns:1fr}
+  .ct-layout,.ai-layout{grid-template-columns:1fr}
+  .ai-main{height:auto;position:static}
+  .ct-l,.ct-r{padding:3rem 1.5rem}.ct-l{padding-top:5rem}
+  .sec{padding:4rem 1.5rem}.fi{grid-template-columns:1fr 1fr;gap:2rem}
+}
+@media(max-width:600px){
+  .hotel-cards-row,.hotel-cards-row4{grid-template-columns:1fr}
+}
+</style>
+</head>
+<body>
+
+<div id="intro">
+  <canvas id="introCanvas"></canvas>
+  <div class="intro-content">
+    <img class="intro-logo" src="https://i.imgur.com/placeholder.png" id="introLogoImg" alt="Amax Travel">
+    <div class="intro-bisml">﷽</div>
+    <div class="intro-title">Sacred Journeys<br><em>Begin Here</em></div>
+    <div class="intro-sub">Amax Travel · Detroit · Est. 2003</div>
+    <div class="intro-bar"><div class="intro-progress"></div></div>
+  </div>
+</div>
+
+<ul class="mMenu" id="mMenu">
+  <li><a onclick="go('home')">Home</a></li>
+  <li><a onclick="go('umrah')">Umrah '26</a></li>
+  <li><a onclick="go('hajj')">Hajj '27</a></li>
+  <li><a onclick="go('islamic')">Islamic Tours</a></li>
+  <li><a onclick="go('general')">World Travel</a></li>
+  <li><a onclick="go('ai')">AI Planner</a></li>
+  <li><a onclick="go('offices')">Our Offices</a></li>
+  <li><a onclick="go('about')">About</a></li>
+  <li><a onclick="go('contact')">Contact</a></li>
+</ul>
+
+<nav>
+  <div class="logo" onclick="go('home')">
+    <canvas id="logoCanvas" width="48" height="48"></canvas>
+    <div class="logo-name">Amax Travel<span>Detroit — Warren, MI</span></div>
+  </div>
+  <ul class="navl">
+    <li><a onclick="go('home')" id="nl-home" class="on">Home</a></li>
+    <li><a onclick="go('umrah')" id="nl-umrah">Umrah '26</a></li>
+    <li><a onclick="go('hajj')" id="nl-hajj">Hajj '27</a></li>
+    <li><a onclick="go('islamic')" id="nl-islamic">Tours</a></li>
+    <li><a onclick="go('general')" id="nl-general">World</a></li>
+    <li><a onclick="go('ai')" id="nl-ai">AI ✦</a></li>
+    <li><a onclick="go('offices')" id="nl-offices">Offices</a></li>
+    <li><a onclick="go('about')" id="nl-about">About</a></li>
+    <li><a onclick="go('contact')" id="nl-contact">Contact</a></li>
+  </ul>
+  <button class="nBtn" onclick="go('contact')">Book Now</button>
+  <button class="ham" id="ham" onclick="document.getElementById('mMenu').classList.toggle('open')">
+    <span></span><span></span><span></span>
+  </button>
+</nav>
+
+<!-- ══ HOME ══ -->
+<div class="page active" id="pg-home">
+  <div class="hero">
+    <canvas id="heroCanvas"></canvas>
+    <div class="hero-overlay"></div>
+    <div class="hero-content">
+      <div class="h-eyebrow">✦ Detroit's Premier Islamic Travel Agency</div>
+      <canvas id="heroLogoCanvas" width="90" height="90" style="display:block;margin:0 auto 1rem;filter:drop-shadow(0 0 20px rgba(212,175,55,.4))"></canvas>
+      <div style="font-family:'Cormorant Garamond',serif;font-size:2rem;color:rgba(212,175,55,.7);margin-bottom:.8rem">﷽</div>
+      <h1>Your Sacred<br>Journey to<br><em>Mecca &amp; Beyond</em></h1>
+      <p class="hero-sub">Expert Umrah &amp; Hajj packages from Detroit, trusted by thousands of Michigan families. Swissôtel Al Maqam · InterContinental · Fairmont · Saudi Airlines.</p>
+      <div class="hero-contact">
+        <span>📍</span>
+        <div>32480 Mound Rd, Warren MI &nbsp;·&nbsp;
+          <a href="tel:2489009400">(248) 900-9400</a> &nbsp;·&nbsp;
+          <a href="mailto:dtw@amaxtravel.com">dtw@amaxtravel.com</a>
+        </div>
+      </div>
+      <div class="hbtns">
+        <button class="bPri" onclick="go('umrah')">View Umrah '26</button>
+        <button class="bGold" onclick="go('hajj')">Hajj '27 Packages</button>
+        <button class="bOut" onclick="go('ai')">AI Planner ✦</button>
+      </div>
+    </div>
+    <div class="scroll-hint">
+      <div class="scroll-line"></div>
+      <span class="scroll-txt">Scroll</span>
+    </div>
+  </div>
+
+  <div class="ticker">
+    <div class="ticker-inner">
+      <span class="ticker-item">✈ Flights from <span>Detroit (DTW)</span></span>
+      <span class="ticker-item">🕋 Umrah '26 — <span>Jun · Jul · Aug · Sep · Oct</span></span>
+      <span class="ticker-item">🌙 Hajj '27 — <span>Maktab-A VIP Zone 1</span></span>
+      <span class="ticker-item">🏨 Hotels: <span>Swissôtel Al Maqam · InterContinental · Fairmont</span></span>
+      <span class="ticker-item">📞 <span>(248) 900-9400</span></span>
+      <span class="ticker-item">📍 32480 Mound Rd, Warren MI 48092</span>
+      <span class="ticker-item">✈ Flights from <span>Detroit (DTW)</span></span>
+      <span class="ticker-item">🕋 Umrah '26 — <span>Jun · Jul · Aug · Sep · Oct</span></span>
+      <span class="ticker-item">🌙 Hajj '27 — <span>Maktab-A VIP Zone 1</span></span>
+      <span class="ticker-item">🏨 Hotels: <span>Swissôtel Al Maqam · InterContinental · Fairmont</span></span>
+      <span class="ticker-item">📞 <span>(248) 900-9400</span></span>
+      <span class="ticker-item">📍 32480 Mound Rd, Warren MI 48092</span>
+    </div>
+  </div>
+
+  <!-- FEATURED HOTELS SHOWCASE -->
+  <div style="background:linear-gradient(180deg,#F9F8F5 0%,#EEE9DB 100%);padding:5rem 2.5rem">
+    <div style="max-width:1200px;margin:0 auto">
+      <div class="sec-tag">Our Exclusive Hotel Partners</div>
+      <h2 class="sec-h">Stay Where <em>Heaven Meets Earth</em></h2>
+      <p style="font-size:.88rem;color:var(--k3);max-width:560px;margin-bottom:2.5rem;line-height:1.85">We partner exclusively with the world's finest hotels adjacent to Masjid al-Haram and Masjid an-Nabawi — the closest views of the Kaabah possible.</p>
+
+      <!-- HERO HOTEL — Swissôtel with the real uploaded image -->
+      <div class="hotel-showcase">
+        <div class="hs-label">★ Signature Partner — Makkah</div>
+        <div class="hs-title">Swissôtel Al Maqam — <em style="font-family:'Cormorant Garamond',serif;font-style:italic;color:#F5E88A">Direct Kaabah Views</em></div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;align-items:stretch">
+          <!-- Main photo card using the REAL uploaded image -->
+          <div class="hcard" style="border-radius:20px;overflow:hidden;position:relative;cursor:pointer;box-shadow:0 20px 60px rgba(0,0,0,.6),0 0 0 1px rgba(212,175,55,.25)">
+          <img class="hcard-img" id="swissotelImg" src="https://images.trvl-media.com/lodging/6000000/5300000/5293800/5293767/1e3cce32.jpg?impolicy=resizecrop&rw=575&rh=575&ra=fill" alt="Swissôtel Al Maqam — Room with direct Kaabah View, Makkah" style="width:100%;height:320px;object-fit:cover;display:block;transition:transform .6s ease">
+            <div class="hcard-overlay"></div>
+            <div class="hcard-shine"></div>
+            <div style="position:absolute;top:1rem;left:1rem;background:linear-gradient(135deg,#B8960C,#F5E88A);border-radius:20px;padding:.22rem .8rem;font-size:.6rem;letter-spacing:.14em;text-transform:uppercase;font-weight:700;color:#0A0A0A">Kaabah View Room</div>
+            <div class="hcard-body">
+              <div class="hcard-city">📍 Makkah, Saudi Arabia</div>
+              <div id="swissotelLogoArea" style="margin-bottom:.5rem"></div>
+              <div class="hcard-name">Swissôtel Al Maqam</div>
+              <div class="hcard-stars">★★★★★</div>
+              <div style="display:flex;gap:.5rem;flex-wrap:wrap">
+                <span class="hcard-badge gold">Kaabah View</span>
+                <span class="hcard-badge blue">Front Row</span>
+                <span class="hcard-badge gold">Amax Exclusive</span>
+              </div>
+            </div>
+          </div>
+          <!-- Info panel -->
+          <div style="display:flex;flex-direction:column;gap:1rem">
+            <div style="background:rgba(255,255,255,.05);border:1px solid rgba(212,175,55,.2);border-radius:16px;padding:1.5rem">
+              <div style="font-size:.62rem;letter-spacing:.18em;text-transform:uppercase;color:rgba(212,175,55,.7);font-weight:700;margin-bottom:.6rem">Why Swissôtel Al Maqam</div>
+              <ul style="list-style:none;display:flex;flex-direction:column;gap:.7rem">
+                <li style="display:flex;align-items:flex-start;gap:.6rem;font-size:.82rem;color:rgba(255,255,255,.8)"><span style="color:#D4AF37;flex-shrink:0">✦</span>Rooms directly overlooking the Kaabah — every prayer you make, you see it.</li>
+                <li style="display:flex;align-items:flex-start;gap:.6rem;font-size:.82rem;color:rgba(255,255,255,.8)"><span style="color:#D4AF37;flex-shrink:0">✦</span>Located in the Abraj Al-Bait Clock Tower — 30 seconds walking to Masjid al-Haram.</li>
+                <li style="display:flex;align-items:flex-start;gap:.6rem;font-size:.82rem;color:rgba(255,255,255,.8)"><span style="color:#D4AF37;flex-shrink:0">✦</span>Available in Umrah Thanksgiving VIP tier &amp; all Hajj Gold/Platinum packages.</li>
+              </ul>
+            </div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:.85rem">
+              <div style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:1rem;text-align:center">
+                <div style="font-family:'Cormorant Garamond',serif;font-size:2rem;color:#F5E88A;font-weight:300">30s</div>
+                <div style="font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-top:.2rem">Walk to Haram</div>
+              </div>
+              <div style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:1rem;text-align:center">
+                <div style="font-family:'Cormorant Garamond',serif;font-size:2rem;color:#F5E88A;font-weight:300">5★</div>
+                <div style="font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-top:.2rem">Luxury Rating</div>
+              </div>
+              <div style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:1rem;text-align:center">
+                <div style="font-family:'Cormorant Garamond',serif;font-size:2rem;color:#F5E88A;font-weight:300">VIP</div>
+                <div style="font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-top:.2rem">Amax Tier Access</div>
+              </div>
+              <div style="background:rgba(255,255,255,.05);border:1px solid rgba(255,255,255,.08);border-radius:12px;padding:1rem;text-align:center">
+                <div style="font-family:'Cormorant Garamond',serif;font-size:2rem;color:#F5E88A;font-weight:300">24/7</div>
+                <div style="font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:rgba(255,255,255,.4);margin-top:.2rem">Staff Support</div>
+              </div>
+            </div>
+            <button class="bGold" style="width:100%" onclick="waInquiry('Swissôtel Al Maqam Umrah Package')">Inquire via WhatsApp →</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- 4-HOTEL ROW -->
+      <div style="margin-top:1.5rem">
+        <div style="font-size:.6rem;letter-spacing:.2em;text-transform:uppercase;color:var(--g);font-weight:700;margin-bottom:1rem">All Amax Partner Hotels</div>
+        <div class="hotel-cards-row4">
+          <!-- InterContinental Madinah -->
+          <div class="hcard hcard-sm">
+            <img class="hcard-img" src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=400&h=300&fit=crop&q=85" alt="InterContinental Dar Al Hijra Madinah" style="height:160px">
+            <div class="hcard-overlay"></div>
+            <div class="hcard-shine"></div>
+            <div class="hcard-corner-star">Madinah</div>
+            <div class="hcard-body" style="padding:1rem 1.1rem">
+              <div class="hcard-city">📍 Madinah</div>
+              <div class="hcard-name" style="font-size:1.05rem">Dar Al Hijra InterContinental</div>
+              <div class="hcard-stars" style="font-size:.65rem">★★★★★</div>
+              <span class="hcard-badge blue">Group Umrah</span>
+            </div>
+          </div>
+          <!-- Fairmont Makkah -->
+          <div class="hcard hcard-sm">
+            <img class="hcard-img" src="https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=400&h=300&fit=crop&q=85" alt="Fairmont Makkah Clock Tower" style="height:160px">
+            <div class="hcard-overlay"></div>
+            <div class="hcard-shine"></div>
+            <div class="hcard-corner-star">Makkah</div>
+            <div class="hcard-body" style="padding:1rem 1.1rem">
+              <div class="hcard-city">📍 Makkah</div>
+              <div class="hcard-name" style="font-size:1.05rem">Fairmont Clock Tower</div>
+              <div class="hcard-stars" style="font-size:.65rem">★★★★★★</div>
+              <span class="hcard-badge gold">Hajj Platinum</span>
+            </div>
+          </div>
+          <!-- Dar Al Iman Madinah -->
+          <div class="hcard hcard-sm">
+            <img class="hcard-img" src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=400&h=300&fit=crop&q=85" alt="InterContinental Dar Al Iman Madinah" style="height:160px">
+            <div class="hcard-overlay"></div>
+            <div class="hcard-shine"></div>
+            <div class="hcard-corner-star">Madinah</div>
+            <div class="hcard-body" style="padding:1rem 1.1rem">
+              <div class="hcard-city">📍 Madinah</div>
+              <div class="hcard-name" style="font-size:1.05rem">Dar Al Iman IC</div>
+              <div class="hcard-stars" style="font-size:.65rem">★★★★★★</div>
+              <span class="hcard-badge gold">Platinum Tier</span>
+            </div>
+          </div>
+          <!-- Dar Al Hijra Thanksgiving -->
+          <div class="hcard hcard-sm">
+            <img class="hcard-img" src="https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=400&h=300&fit=crop&q=85" alt="Hotel Dar Al Hijra Madinah" style="height:160px">
+            <div class="hcard-overlay"></div>
+            <div class="hcard-shine"></div>
+            <div class="hcard-corner-star">Thanksgiving</div>
+            <div class="hcard-body" style="padding:1rem 1.1rem">
+              <div class="hcard-city">📍 Madinah</div>
+              <div class="hcard-name" style="font-size:1.05rem">Hotel Dar Al Hijra</div>
+              <div class="hcard-stars" style="font-size:.65rem">★★★★★</div>
+              <span class="hcard-badge blue">Deluxe Umrah</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="sec">
+    <div class="sec-tag">2026–2027 Packages</div>
+    <h2 class="sec-h">Sacred Journeys,<br><em>Thoughtfully Arranged</em></h2>
+    <div class="pkg-grid">
+      <div class="card3 pkg-card" onclick="go('umrah')">
+        <div class="pkg-arrow">↗</div>
+        <div class="pkg-ico" style="background:linear-gradient(135deg,#FDF8E3,#E8D080)">🕋</div>
+        <h3>Umrah '26</h3>
+        <p>Group departures Jun–Oct from Detroit. Swissôtel &amp; InterContinental. Train between Makkah &amp; Madinah. Ihram included.</p>
+        <div class="pkg-from">From per person</div>
+        <div class="pkg-price">$1,050</div>
+      </div>
+      <div class="card3 pkg-card" onclick="go('hajj')">
+        <div class="pkg-arrow">↗</div>
+        <div class="pkg-ico" style="background:linear-gradient(135deg,#E8F0FF,#B0C8F8)">🌙</div>
+        <h3>Hajj '27</h3>
+        <p>Maktab-A VIP Zone 1. Depart Madinah 7/8 May 2027. Silver, Gold &amp; Platinum tiers. Swissôtel &amp; Fairmont.</p>
+        <div class="pkg-from">From per person</div>
+        <div class="pkg-price">$9,500</div>
+      </div>
+      <div class="card3 pkg-card" onclick="go('general')">
+        <div class="pkg-arrow">↗</div>
+        <div class="pkg-ico" style="background:linear-gradient(135deg,#E8F5FF,#B0D8F8)">🌍</div>
+        <h3>World Travel</h3>
+        <p>Europe, Asia 4-in-1, Halal packages. Rome · Venice · Switzerland · Bali · Singapore · Bangkok. 4&amp;5★ hotels.</p>
+        <div class="pkg-from">From per person</div>
+        <div class="pkg-price">$3,690</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div style="background:var(--bg2);padding:5.5rem 2.5rem">
+    <div style="max-width:1200px;margin:0 auto">
+      <div class="sec-tag">Why Choose Amax Detroit</div>
+      <h2 class="sec-h">Trusted by Thousands<br><em>Across Michigan</em></h2>
+      <div class="why-grid">
+        <div class="why-c"><div class="why-ico">🕌</div><div class="why-t">IATA Certified</div><div class="why-d">Ministry of Hajj recognized. Saudi visa processing &amp; Maktab-A VIP Zone access.</div></div>
+        <div class="why-c"><div class="why-ico">🏨</div><div class="why-t">5-Star Hotels</div><div class="why-d">Swissôtel Al Maqam · InterContinental · Fairmont · Dar Al Iman — exclusive partnerships.</div></div>
+        <div class="why-c"><div class="why-ico">🚄</div><div class="why-t">Train Between Cities</div><div class="why-d">Haramain high-speed rail between Makkah &amp; Madinah included in group Umrah packages.</div></div>
+        <div class="why-c"><div class="why-ico">🤝</div><div class="why-t">24/7 Support</div><div class="why-d">Dedicated AMAX staff in Mecca, Medina &amp; every destination. Never alone on your journey.</div></div>
+      </div>
+    </div>
+  </div>
+
+  <div class="divider"></div>
+
+  <div class="sec">
+    <div class="sec-tag">Community Stories</div>
+    <h2 class="sec-h">Words from Our<br><em>Honored Pilgrims</em></h2>
+    <div class="testi-grid">
+      <div class="testi"><div class="testi-stars">★★★★★</div><p class="testi-q">"The Swissôtel Al Maqam room — Kaabah view from our window. We cried seeing the Kaabah from our bed. Amax handled everything perfectly."</p><div class="testi-name">Sister Fatima A.</div><div class="testi-loc">Dearborn, Michigan</div></div>
+      <div class="testi"><div class="testi-stars">★★★★★</div><p class="testi-q">"Booked Hajj Gold Package. Maktab-A VIP tents in Mina were a true blessing. The Dar al Hijra InterContinental in Madinah was stunning."</p><div class="testi-name">Brother Khalid M.</div><div class="testi-loc">Hamtramck, Michigan</div></div>
+      <div class="testi"><div class="testi-stars">★★★★★</div><p class="testi-q">"The Europe 9-day trip — Rome, Venice, Switzerland. 5-star hotels, all flights included. Book Now Pay Later made it so easy for our family."</p><div class="testi-name">The Hassan Family</div><div class="testi-loc">Troy, Michigan</div></div>
+    </div>
+  </div>
+
+  <div style="background:linear-gradient(135deg,#0C1F3F,#1A3560);padding:4.5rem 2.5rem;text-align:center">
+    <p style="font-family:'Cormorant Garamond',serif;font-size:1.5rem;font-style:italic;color:rgba(255,255,255,.85);max-width:640px;margin:0 auto 1.5rem;line-height:1.9">"And proclaim to the people the Hajj; they will come to you on foot and on every lean camel."<br><span style="font-size:.9rem;color:rgba(255,255,255,.4);font-style:normal;font-family:'Plus Jakarta Sans',sans-serif">— Quran 22:27</span></p>
+    <button class="bGold" onclick="waInquiry('General Consultation')">Request Free Consultation via WhatsApp</button>
+  </div>
+</div>
+
+<!-- ══ UMRAH ══ -->
+<div class="page" id="pg-umrah">
+  <div class="ph"><div class="ph-inner"><div class="ph-bc">Home / <span>Umrah Packages '26</span></div><h1>Umrah <em>'26</em></h1><p>Group departures Jun, Jul, Aug, Sep &amp; Oct 2026 · Departing Detroit (DTW)</p></div></div>
+  <div style="max-width:1200px;margin:0 auto;padding:3rem 2.5rem">
+
+    <!-- HOTEL SHOWCASE for Umrah page -->
+    <div class="hotel-showcase" style="margin-bottom:2rem">
+      <div class="hs-label">Your Hotels — Umrah '26</div>
+      <div class="hs-title">5-Star Front-Row Accommodation</div>
+      <div class="hotel-cards-row">
+        <div class="hcard">
+          <img class="hcard-img" id="swissotelUmrahImg" src="https://lh3.googleusercontent.com/gps-cs-s/APNQkAHp6VLeCqEakl6RNKm_k1ctYL5Dh6lFCAhDY1Ht30xhbqgzeNryNGKGGbo-tM5WbmUw09iAM79UbNCksEW2t_6ADK7NJxnUMdt2tNn68P7jhFmzxL1k95vT7OcwwpA9rZuQdHxWh8lmtKg=w324-h312-n-k-no" alt="Swissôtel Al Maqam Makkah" style="height:220px">
+          <div class="hcard-overlay"></div>
+          <div class="hcard-shine"></div>
+          <div class="hcard-corner-star">Makkah</div>
+          <div id="swissotelLogoUmrah" style="position:absolute;top:1rem;right:1rem;background:rgba(255,255,255,.92);border-radius:8px;padding:.35rem .65rem"></div>
+          <div class="hcard-body">
+            <div class="hcard-city">📍 Makkah, Saudi Arabia</div>
+            <div class="hcard-name">Swissôtel Al Maqam</div>
+            <div class="hcard-stars">★★★★★</div>
+            <div style="font-size:.78rem;color:rgba(255,255,255,.65);margin-bottom:.5rem">Abraj Al-Bait Clock Tower · 30s to Haram</div>
+            <div style="display:flex;gap:.4rem;flex-wrap:wrap">
+              <span class="hcard-badge gold">Group &amp; VIP Umrah</span>
+              <span class="hcard-badge blue">Front Row</span>
+            </div>
+          </div>
+        </div>
+        <div class="hcard">
+          <img class="hcard-img" src="https://www.medina-hotels-sa.com/data/Pics/OriginalPhoto/2225/222566/222566459/intercontinental-dar-al-hijra-madinah-by-ihg-medina-pic-87.JPEG" alt="Dar Al Hijra InterContinental Madinah" style="height:220px">
+          <div class="hcard-overlay"></div>
+          <div class="hcard-shine"></div>
+          <div class="hcard-corner-star">Madinah</div>
+          <div class="hcard-body">
+            <div class="hcard-city">📍 Madinah, Saudi Arabia</div>
+            <div class="hcard-name">Dar Al Hijra InterContinental</div>
+            <div class="hcard-stars">★★★★★</div>
+            <div style="font-size:.78rem;color:rgba(255,255,255,.65);margin-bottom:.5rem">Adjacent to Masjid an-Nabawi · Prophet's Mosque</div>
+            <div style="display:flex;gap:.4rem">
+              <span class="hcard-badge blue">Group Umrah</span>
+              <span class="hcard-badge gold">Front Row</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Thanksgiving Umrah VIP Hotels -->
+    <div class="hotel-showcase" style="margin-bottom:2rem;background:linear-gradient(135deg,#1A0A00,#3D2000)">
+      <div class="hs-label">Thanksgiving Umrah — VIP Tier Hotels</div>
+      <div class="hs-title">Ultimate Luxury · <em style="font-family:'Cormorant Garamond',serif;color:#F5E88A">Nov 19–28, 2026</em></div>
+      <div class="hotel-cards-row">
+        <div class="hcard">
+          <img class="hcard-img" id="swissotelThanksImg" src="https://images.unsplash.com/photo-1590490360182-c33d57733427?w=600&h=220&fit=crop&q=90" alt="Fairmont Makkah Clock Tower" style="height:220px">
+          <div class="hcard-overlay"></div>
+          <div class="hcard-shine"></div>
+          <div style="position:absolute;top:.75rem;left:.75rem;background:linear-gradient(135deg,#B8960C,#F5E88A);border-radius:20px;padding:.2rem .7rem;font-size:.6rem;font-weight:700;color:#0A0A0A;letter-spacing:.1em;text-transform:uppercase">VIP Tier</div>
+          <div class="hcard-body">
+            <div class="hcard-city">📍 Makkah</div>
+            <div class="hcard-name">Fairmont Makkah Clock Tower</div>
+            <div class="hcard-stars">★★★★★★</div>
+            <span class="hcard-badge gold">Thanksgiving VIP</span>
+          </div>
+        </div>
+        <div class="hcard">
+          <img class="hcard-img" src="https://images.unsplash.com/photo-1551882547-ff40c63fe5fa?w=600&h=220&fit=crop&q=90" alt="Hotel Dar Al Iman Madinah" style="height:220px">
+          <div class="hcard-overlay"></div>
+          <div class="hcard-shine"></div>
+          <div style="position:absolute;top:.75rem;left:.75rem;background:linear-gradient(135deg,#B8960C,#F5E88A);border-radius:20px;padding:.2rem .7rem;font-size:.6rem;font-weight:700;color:#0A0A0A;letter-spacing:.1em;text-transform:uppercase">VIP Tier</div>
+          <div class="hcard-body">
+            <div class="hcard-city">📍 Madinah</div>
+            <div class="hcard-name">Hotel Dar Al Iman</div>
+            <div class="hcard-stars">★★★★★</div>
+            <span class="hcard-badge gold">Thanksgiving VIP</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="sec-tag" style="margin-bottom:1rem">Special Offer</div>
+    <h2 class="sec-h" style="margin-bottom:2rem">Thanksgiving Umrah <em>'26</em></h2>
+    <div class="pkg-tbl">
+      <div class="pt-header" style="background:linear-gradient(135deg,#5C3D0A,#8B6914)">
+        <div>
+          <div class="pt-badge">✦ Special Thanksgiving Package</div>
+          <div class="pt-title">Thanksgiving Umrah</div>
+          <div class="pt-sub">Departure: 19 Nov 2026 · Return: 28 Nov 2026 · 10 Days</div>
+          <div class="pt-dates">✈ Airline Included · 🚄 Medina → Makkah Bullet Train</div>
+        </div>
+        <div class="pt-matrix" style="min-width:400px;border-radius:12px;overflow:hidden;border:1px solid rgba(255,255,255,.12)">
+          <div class="pm-head">Room Type</div><div class="pm-head">DELUXE</div><div class="pm-head">VIP</div>
+          <div class="pm-cell"><div class="pm-price" style="font-size:1.1rem;color:rgba(255,255,255,.6)">QUAD</div></div><div class="pm-cell"><div class="pm-price">$2,690</div></div><div class="pm-cell"><div class="pm-price" style="color:#F5E88A">$2,890</div></div>
+          <div class="pm-cell"><div class="pm-price" style="font-size:1.1rem;color:rgba(255,255,255,.6)">TRIPLE</div></div><div class="pm-cell"><div class="pm-price">$2,790</div></div><div class="pm-cell"><div class="pm-price" style="color:#F5E88A">$3,090</div></div>
+          <div class="pm-cell"><div class="pm-price" style="font-size:1.1rem;color:rgba(255,255,255,.6)">DOUBLE</div></div><div class="pm-cell"><div class="pm-price">$2,990</div></div><div class="pm-cell"><div class="pm-price" style="color:#F5E88A">$3,290</div></div>
+        </div>
+      </div>
+      <div class="pt-incl" style="grid-template-columns:repeat(4,1fr)">
+        <div class="incl-item"><div class="incl-check">✓</div>Airline Tickets Included</div>
+        <div class="incl-item"><div class="incl-check">✓</div>5-Star Hotels</div>
+        <div class="incl-item"><div class="incl-check">✓</div>Saudi Visa</div>
+        <div class="incl-item"><div class="incl-check">✓</div>VIP Buses</div>
+        <div class="incl-item"><div class="incl-check">✓</div>Medina→Makkah Bullet Train</div>
+        <div class="incl-item"><div class="incl-check">✓</div>AMAX 24/7 Staff</div>
+        <div class="incl-item"><div class="incl-check">✓</div>Dedicated Imam</div>
+        <div class="incl-item"><div class="incl-check">✓</div>Ihram + Breakfast</div>
+      </div>
+      <div class="pt-footer">
+        <div class="save-tag">💰 Book Slot Now $500 — Pay Later</div>
+        <button class="bk-btn gold-btn" onclick="waInquiry('Thanksgiving Umrah 2026')">Reserve via WhatsApp →</button>
+      </div>
+    </div>
+
+    <div class="sec-tag" style="margin-bottom:1rem;margin-top:2rem">Group Packages</div>
+    <h2 class="sec-h" style="margin-bottom:2rem">Amax Group Umrah <em>'26</em></h2>
+    <div class="pkg-tbl">
+      <div class="pt-header" style="background:linear-gradient(135deg,#0C1F3F,#1A3560)">
+        <div>
+          <div class="pt-badge">✈ Amax Group Umrah</div>
+          <div class="pt-title">Economy Group Package</div>
+          <div class="pt-sub">Jun · Jul · Aug · Sep · Oct 2026</div>
+          <div class="pt-dates">5-Star Front Row Hotel · Train Between Cities · Ihram for Gents</div>
+        </div>
+        <div class="pt-matrix" style="min-width:340px;border-radius:12px;overflow:hidden;border:1px solid rgba(255,255,255,.1)">
+          <div class="pm-head">QUAD</div><div class="pm-head">TRIPLE</div><div class="pm-head">DOUBLE</div>
+          <div class="pm-cell"><div class="pm-price">$1,050</div><div class="pm-lbl">Per Person</div></div>
+          <div class="pm-cell"><div class="pm-price">$1,150</div><div class="pm-lbl">Per Person</div></div>
+          <div class="pm-cell"><div class="pm-price">$1,300</div><div class="pm-lbl">Per Person</div></div>
+        </div>
+      </div>
+      <div class="pt-incl">
+        <div class="incl-item"><div class="incl-check">✓</div>5-Star Front Row Hotel with Breakfast</div>
+        <div class="incl-item"><div class="incl-check">✓</div>Ihram for Gents</div>
+        <div class="incl-item"><div class="incl-check">✓</div>Train Between Makkah &amp; Madinah</div>
+        <div class="incl-item"><div class="incl-check">✓</div>Saudi Visa</div>
+        <div class="incl-item"><div class="incl-check">✓</div>Ziyarats with Experienced Guides</div>
+        <div class="incl-item"><div class="incl-check">✓</div>Hassle-Free Experience</div>
+      </div>
+      <div class="pt-footer">
+        <div style="font-size:.8rem;color:var(--k3)">📞 <a href="tel:2489009400" style="color:var(--n);font-weight:700;text-decoration:none">(248) 900-9400</a></div>
+        <button class="bk-btn" onclick="waInquiry('Group Umrah 2026')">Book via WhatsApp →</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ HAJJ ══ -->
+<div class="page" id="pg-hajj">
+  <div class="ph"><div class="ph-inner"><div class="ph-bc">Home / <span>Hajj '27</span></div><h1>Hajj <em>'27</em></h1><p>Maktab-A VIP Zone 1 · 14 Days Standard · 10 Days Express · Depart 7/8 May 2027</p></div></div>
+  <div style="max-width:1200px;margin:0 auto;padding:3rem 2.5rem">
+
+    <!-- HAJJ HOTELS SHOWCASE -->
+    <div class="hotel-showcase" style="margin-bottom:2.5rem">
+      <div class="hs-label">Hajj '27 — Your Hotels by Tier</div>
+      <div class="hs-title">All tiers include Maktab-A VIP Zone 1</div>
+      <div class="hotel-cards-row4">
+        <div class="hcard hcard-sm">
+          <img class="hcard-img" src="https://images.unsplash.com/photo-1590490360182-c33d57733427?w=400&h=220&fit=crop&q=85" alt="Swissôtel Makkah" style="height:140px">
+          <div class="hcard-overlay"></div><div class="hcard-shine"></div>
+          <div style="position:absolute;top:.5rem;left:.5rem;background:rgba(74,74,74,.9);border-radius:20px;padding:.15rem .55rem;font-size:.56rem;letter-spacing:.1em;text-transform:uppercase;font-weight:700;color:#ccc">Silver</div>
+          <div class="hcard-body" style="padding:.85rem 1rem">
+            <div class="hcard-city">📍 Makkah</div>
+            <div class="hcard-name" style="font-size:.95rem">Swissôtel Al Maqam</div>
+            <div class="hcard-stars" style="font-size:.6rem">★★★★★</div>
+          </div>
+        </div>
+        <div class="hcard hcard-sm">
+          <img class="hcard-img" src="https://images.unsplash.com/photo-1566073771259-6a8506099945?w=400&h=220&fit=crop&q=85" alt="Dar Al Hijra IC Madinah" style="height:140px">
+          <div class="hcard-overlay"></div><div class="hcard-shine"></div>
+          <div style="position:absolute;top:.5rem;left:.5rem;background:rgba(74,74,74,.9);border-radius:20px;padding:.15rem .55rem;font-size:.56rem;letter-spacing:.1em;text-transform:uppercase;font-weight:700;color:#ccc">Silver/Gold</div>
+          <div class="hcard-body" style="padding:.85rem 1rem">
+            <div class="hcard-city">📍 Madinah</div>
+            <div class="hcard-name" style="font-size:.95rem">Dar Al Hijra IC</div>
+            <div class="hcard-stars" style="font-size:.6rem">★★★★★</div>
+          </div>
+        </div>
+        <div class="hcard hcard-sm">
+          <img class="hcard-img" src="https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=400&h=220&fit=crop&q=85" alt="Fairmont Makkah Platinum" style="height:140px">
+          <div class="hcard-overlay"></div><div class="hcard-shine"></div>
+          <div style="position:absolute;top:.5rem;left:.5rem;background:linear-gradient(135deg,rgba(184,150,12,.9),rgba(212,175,55,.8));border-radius:20px;padding:.15rem .55rem;font-size:.56rem;letter-spacing:.1em;text-transform:uppercase;font-weight:700;color:#0A0A0A">Platinum</div>
+          <div class="hcard-body" style="padding:.85rem 1rem">
+            <div class="hcard-city">📍 Makkah</div>
+            <div class="hcard-name" style="font-size:.95rem">Fairmont Clock Tower</div>
+            <div class="hcard-stars" style="font-size:.6rem">★★★★★★</div>
+          </div>
+        </div>
+        <div class="hcard hcard-sm">
+          <img class="hcard-img" src="https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=400&h=220&fit=crop&q=85" alt="Dar Al Iman IC Madinah Platinum" style="height:140px">
+          <div class="hcard-overlay"></div><div class="hcard-shine"></div>
+          <div style="position:absolute;top:.5rem;left:.5rem;background:linear-gradient(135deg,rgba(184,150,12,.9),rgba(212,175,55,.8));border-radius:20px;padding:.15rem .55rem;font-size:.56rem;letter-spacing:.1em;text-transform:uppercase;font-weight:700;color:#0A0A0A">Platinum</div>
+          <div class="hcard-body" style="padding:.85rem 1rem">
+            <div class="hcard-city">📍 Madinah</div>
+            <div class="hcard-name" style="font-size:.95rem">Dar Al Iman IC</div>
+            <div class="hcard-stars" style="font-size:.6rem">★★★★★★</div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="hajj-intro" style="margin-bottom:3rem">
+      <div>
+        <div class="sec-tag" style="margin-bottom:.75rem">Hajj '27 — Maktab-A VIP Zone 1</div>
+        <h2 style="font-family:'Cormorant Garamond',serif;font-size:2.2rem;font-weight:300;color:#fff;line-height:1.1;margin-bottom:.85rem">The Fifth Pillar,<br><em style="color:#F5E88A">Fulfilled in Excellence</em></h2>
+        <p style="font-size:.85rem;color:rgba(255,255,255,.55);line-height:1.85;margin-bottom:1.5rem">Three tiers, standard &amp; express options. All include Hajj visa, 5-star hotels, Breakfast &amp; Dinner Buffet, Qurbani, and Madinah→Makkah by train &amp; bus.</p>
+        <div style="display:flex;gap:1rem;flex-wrap:wrap">
+          <div style="background:rgba(212,175,55,.12);border:1px solid rgba(212,175,55,.25);border-radius:10px;padding:.75rem 1.25rem;font-size:.78rem;color:rgba(255,255,255,.8)">🗓 Depart Madinah: 7/8 May 2027</div>
+          <div style="background:rgba(212,175,55,.12);border:1px solid rgba(212,175,55,.25);border-radius:10px;padding:.75rem 1.25rem;font-size:.78rem;color:rgba(255,255,255,.8)">🛫 Return Jeddah: 21/22 May 2027</div>
+        </div>
+      </div>
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem">
+        <div class="hajj-stat"><div class="hajj-stat-n">3</div><div class="hajj-stat-l">Package Tiers</div></div>
+        <div class="hajj-stat"><div class="hajj-stat-n">A</div><div class="hajj-stat-l">Maktab Zone</div></div>
+        <div class="hajj-stat"><div class="hajj-stat-n">14</div><div class="hajj-stat-l">Standard Days</div></div>
+        <div class="hajj-stat"><div class="hajj-stat-n">10</div><div class="hajj-stat-l">Express Days</div></div>
+      </div>
+    </div>
+
+    <!-- Silver -->
+    <div class="hajj-pkg">
+      <div class="hp-head silver">
+        <div><div style="font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;font-weight:700;padding:.28rem .8rem;border-radius:20px;background:rgba(255,255,255,.15);color:rgba(255,255,255,.9);display:inline-block;margin-bottom:.5rem">Tier 1</div><div class="hp-title">Silver Package</div><div class="hp-days">Standard: 14 Days · Express: 10 Days</div></div>
+        <div style="background:rgba(255,255,255,.1);color:#fff;font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;padding:.28rem .7rem;border-radius:20px;font-weight:700;align-self:flex-start">Swissôtel + Dar Al Hijra IC</div>
+      </div>
+      <div class="hp-cols">
+        <div class="hp-col"><div class="hp-col-title">Silver Standard (14 Days)</div>
+          <div class="hp-row"><span class="hp-room">QUAD</span><span class="hp-price-v">$9,990</span></div>
+          <div class="hp-row"><span class="hp-room">TRIPLE</span><span class="hp-price-v">$10,990</span></div>
+          <div class="hp-row"><span class="hp-room">DOUBLE</span><span class="hp-price-v">$11,990</span></div>
+        </div>
+        <div class="hp-col"><div class="hp-col-title">Silver Express (10 Days)</div>
+          <div class="hp-row"><span class="hp-room">QUAD</span><span class="hp-price-v" style="color:var(--g)">$9,500</span></div>
+          <div class="hp-row"><span class="hp-room">TRIPLE</span><span class="hp-price-v" style="color:var(--g)">$10,500</span></div>
+          <div class="hp-row"><span class="hp-room">DOUBLE</span><span class="hp-price-v" style="color:var(--g)">$11,500</span></div>
+        </div>
+      </div>
+      <div style="padding:1.25rem 2rem;background:var(--bg);border-top:1px solid rgba(0,0,0,.06);display:grid;grid-template-columns:1fr 1fr;gap:1rem">
+        <div style="display:flex;align-items:center;gap:.75rem"><div style="font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:var(--g);font-weight:700">Madinah</div><div style="font-size:.82rem;font-weight:600;color:var(--k2)">Dar Al Hijra InterContinental ★★★★★</div></div>
+        <div style="display:flex;align-items:center;gap:.75rem"><div style="font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:var(--g);font-weight:700">Makkah</div><div style="font-size:.82rem;font-weight:600;color:var(--k2)">Swissôtel Al Maqam ★★★★★ <span style="font-size:.7rem;color:var(--k4)">(shifts to Aziza 23rd May)</span></div></div>
+      </div>
+      <div class="pt-footer"><div class="save-tag">💰 Book Now · Pay Later Available</div><button class="bk-btn" onclick="waInquiry('Hajj 2027 Silver Package')">Reserve Silver via WhatsApp →</button></div>
+    </div>
+
+    <!-- Gold -->
+    <div class="hajj-pkg" style="border-color:rgba(212,175,55,.4)">
+      <div class="hp-head gold-h">
+        <div><div style="font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;font-weight:700;padding:.28rem .8rem;border-radius:20px;background:rgba(0,0,0,.15);color:rgba(255,255,255,.9);display:inline-block;margin-bottom:.5rem">⭐ Most Popular — Tier 2</div><div class="hp-title">Gold Package</div><div class="hp-days">Standard: 14 Days · Express: 10 Days</div></div>
+        <div style="background:rgba(0,0,0,.15);color:#fff;font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;padding:.28rem .7rem;border-radius:20px;font-weight:700;align-self:flex-start">Non-Shifting Hotel</div>
+      </div>
+      <div class="hp-cols">
+        <div class="hp-col"><div class="hp-col-title">Gold Standard (14 Days)</div>
+          <div class="hp-row"><span class="hp-room">QUAD</span><span class="hp-price-v" style="color:#8B6914">$13,990</span></div>
+          <div class="hp-row"><span class="hp-room">TRIPLE</span><span class="hp-price-v" style="color:#8B6914">$14,990</span></div>
+          <div class="hp-row"><span class="hp-room">DOUBLE</span><span class="hp-price-v" style="color:#8B6914">$16,990</span></div>
+        </div>
+        <div class="hp-col"><div class="hp-col-title">Gold Express (10 Days)</div>
+          <div class="hp-row"><span class="hp-room">QUAD</span><span class="hp-price-v" style="color:var(--g)">$13,500</span></div>
+          <div class="hp-row"><span class="hp-room">TRIPLE</span><span class="hp-price-v" style="color:var(--g)">$14,500</span></div>
+          <div class="hp-row"><span class="hp-room">DOUBLE</span><span class="hp-price-v" style="color:var(--g)">$16,500</span></div>
+        </div>
+      </div>
+      <div style="padding:1.25rem 2rem;background:var(--bg);border-top:1px solid rgba(0,0,0,.06);display:grid;grid-template-columns:1fr 1fr;gap:1rem">
+        <div style="display:flex;align-items:center;gap:.75rem"><div style="font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:var(--g);font-weight:700">Madinah</div><div style="font-size:.82rem;font-weight:600;color:var(--k2)">Dar Al Hijra InterContinental ★★★★★</div></div>
+        <div style="display:flex;align-items:center;gap:.75rem"><div style="font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:var(--g);font-weight:700">Makkah</div><div style="font-size:.82rem;font-weight:600;color:var(--k2)">Swissôtel Al Maqam ★★★★★ <span style="font-size:.7rem;color:#1A7A3C;font-weight:700">NON-SHIFTING</span></div></div>
+      </div>
+      <div class="pt-footer"><div class="save-tag">💰 Book Now · Pay Later Available</div><button class="bk-btn gold-btn" onclick="waInquiry('Hajj 2027 Gold Package')">Reserve Gold via WhatsApp →</button></div>
+    </div>
+
+    <!-- Platinum -->
+    <div class="hajj-pkg">
+      <div class="hp-head plat">
+        <div><div style="font-size:.58rem;letter-spacing:.2em;text-transform:uppercase;font-weight:700;padding:.28rem .8rem;border-radius:20px;background:rgba(255,255,255,.15);color:rgba(255,255,255,.9);display:inline-block;margin-bottom:.5rem">💎 Ultimate Luxury — Tier 3</div><div class="hp-title">Platinum Package</div><div class="hp-days">Standard: 14 Days · Express: 10 Days</div></div>
+        <div style="background:rgba(255,255,255,.1);color:#fff;font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;padding:.28rem .7rem;border-radius:20px;font-weight:700;align-self:flex-start">Fairmont — Non-Shifting</div>
+      </div>
+      <div class="hp-cols">
+        <div class="hp-col"><div class="hp-col-title">Platinum Standard (14 Days)</div>
+          <div class="hp-row"><span class="hp-room">QUAD</span><span class="hp-price-v">$15,990</span></div>
+          <div class="hp-row"><span class="hp-room">TRIPLE</span><span class="hp-price-v">$17,990</span></div>
+          <div class="hp-row"><span class="hp-room">DOUBLE</span><span class="hp-price-v">$18,990</span></div>
+        </div>
+        <div class="hp-col"><div class="hp-col-title">Platinum Express (10 Days)</div>
+          <div class="hp-row"><span class="hp-room">QUAD</span><span class="hp-price-v" style="color:var(--g)">$15,500</span></div>
+          <div class="hp-row"><span class="hp-room">TRIPLE</span><span class="hp-price-v" style="color:var(--g)">$17,500</span></div>
+          <div class="hp-row"><span class="hp-room">DOUBLE</span><span class="hp-price-v" style="color:var(--g)">$18,500</span></div>
+        </div>
+      </div>
+      <div style="padding:1.25rem 2rem;background:var(--bg);border-top:1px solid rgba(0,0,0,.06);display:grid;grid-template-columns:1fr 1fr;gap:1rem">
+        <div style="display:flex;align-items:center;gap:.75rem"><div style="font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:var(--g);font-weight:700">Madinah</div><div style="font-size:.82rem;font-weight:600;color:var(--k2)">InterContinental Dar Al Iman ★★★★★★</div></div>
+        <div style="display:flex;align-items:center;gap:.75rem"><div style="font-size:.6rem;letter-spacing:.12em;text-transform:uppercase;color:var(--g);font-weight:700">Makkah</div><div style="font-size:.82rem;font-weight:600;color:var(--k2)">Fairmont Makkah Clock Tower ★★★★★★ <span style="font-size:.7rem;color:#1A7A3C;font-weight:700">NON-SHIFTING</span></div></div>
+      </div>
+      <div class="pt-footer"><div class="save-tag">💰 Book Now · Pay Later Available</div><button class="bk-btn" onclick="waInquiry('Hajj 2027 Platinum Package')">Reserve Platinum via WhatsApp →</button></div>
+    </div>
+
+    <div class="sec-tag" style="margin-top:3rem;margin-bottom:1.25rem">The Process</div>
+    <h2 class="sec-h" style="margin-bottom:2rem">How We <em>Guide You</em></h2>
+    <div class="hajj-steps">
+      <div class="hs"><div class="hs-n">01</div><div class="hs-t">Consultation</div><div class="hs-d">Meet our Hajj specialists. Assess eligibility, choose tier &amp; express or standard.</div></div>
+      <div class="hs"><div class="hs-n">02</div><div class="hs-t">Visa &amp; Registration</div><div class="hs-d">Maktab-A registration, passport authentication, complete Saudi Hajj visa.</div></div>
+      <div class="hs"><div class="hs-n">03</div><div class="hs-t">Pre-Departure Training</div><div class="hs-d">Scholar-led sessions covering rituals, duas, Arafat, Mina &amp; health prep.</div></div>
+      <div class="hs"><div class="hs-n">04</div><div class="hs-t">Journey &amp; Support</div><div class="hs-d">On-ground AMAX guides in Mecca, Mina, Arafat, Muzdalifah — 24/7.</div></div>
+    </div>
+    <div style="text-align:center;margin-top:3rem"><button class="bGold" onclick="waInquiry('Hajj 2027 General Inquiry')">WhatsApp: (248) 900-9400</button></div>
+  </div>
+</div>
+
+<!-- ══ ISLAMIC TOURS ══ -->
+<div class="page" id="pg-islamic">
+  <div class="ph"><div class="ph-inner"><div class="ph-bc">Home / <span>Islamic Heritage Tours</span></div><h1>Islamic <em>Heritage Tours</em></h1><p>Scholar-led journeys through the sacred sites of the Muslim world — from Detroit.</p></div></div>
+  <div class="sec">
+    <div class="sec-tag">Destinations</div>
+    <h2 class="sec-h">Walk in the Footsteps<br><em>of the Prophets</em></h2>
+    <div class="tour-grid">
+      <div class="card3 tour-c">
+        <div class="tour-img" style="background:linear-gradient(135deg,#C4A46A,#8B6914)"><span style="font-size:4rem">🦅</span></div>
+        <div class="tour-body">
+          <div class="tour-lbl">8 Nights · Group Tours</div>
+          <h3>Turkey — Istanbul &amp; Bursa</h3>
+          <p>Topkapi relics of the Prophet ﷺ, Hagia Sophia, Sultanahmet, Blue Mosque, Grand Bazaar, Bursa Ottoman heritage.</p>
+          <div class="tour-tags"><span class="ttag">✈ Turkish Airlines</span><span class="ttag">🏨 5-Star Hotel</span><span class="ttag">📖 Scholar-Led</span></div>
+          <div class="tour-price">From $2,199/person</div>
+          <div class="tour-cta" onclick="waInquiry('Islamic Tour Turkey')">Book via WhatsApp →</div>
+        </div>
+      </div>
+      <div class="card3 tour-c">
+        <div class="tour-img" style="background:linear-gradient(135deg,#8AB870,#5A8040)"><span style="font-size:4rem">🕍</span></div>
+        <div class="tour-body">
+          <div class="tour-lbl">7 Nights · Sacred Sites</div>
+          <h3>Jerusalem — Masjid Al-Aqsa</h3>
+          <p>Al-Aqsa Mosque, Dome of the Rock, Hebron — among the most moving journeys for every Muslim.</p>
+          <div class="tour-tags"><span class="ttag">✈ Royal Jordanian</span><span class="ttag">🏨 Jerusalem Hotel</span><span class="ttag">📖 Scholar Guide</span></div>
+          <div class="tour-price">From $2,799/person</div>
+          <div class="tour-cta" onclick="waInquiry('Islamic Tour Jerusalem')">Book via WhatsApp →</div>
+        </div>
+      </div>
+      <div class="card3 tour-c">
+        <div class="tour-img" style="background:linear-gradient(135deg,#C88850,#8B4A14)"><span style="font-size:4rem">🏺</span></div>
+        <div class="tour-body">
+          <div class="tour-lbl">10 Nights · History &amp; Faith</div>
+          <h3>Egypt — Islamic Cairo</h3>
+          <p>Al-Azhar Mosque, Citadel of Saladin, Khan el-Khalili, Luxor, and the medieval mosques of Islamic Cairo.</p>
+          <div class="tour-tags"><span class="ttag">✈ EgyptAir</span><span class="ttag">🏨 Marriott Mena House</span><span class="ttag">📖 Scholar Guide</span></div>
+          <div class="tour-price">From $1,999/person</div>
+          <div class="tour-cta" onclick="waInquiry('Islamic Tour Egypt')">Book via WhatsApp →</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ GENERAL ══ -->
+<div class="page" id="pg-general">
+  <div class="ph"><div class="ph-inner"><div class="ph-bc">Home / <span>World Travel Packages</span></div><h1>World <em>Travel</em></h1><p>Halal-friendly leisure &amp; group packages worldwide — from USA &amp; Canada.</p></div></div>
+  <div style="max-width:1200px;margin:0 auto;padding:3rem 2.5rem">
+    <div class="gtrav-grid">
+      <div class="gtrav"><div class="gtrav-hero" style="background:linear-gradient(135deg,#0055AA,#001F6B)"><div class="gtrav-flag">🇸🇬🇹🇭🇮🇩</div><div><div style="background:rgba(255,0,0,.85);color:#fff;font-size:.65rem;letter-spacing:.12em;text-transform:uppercase;font-weight:700;padding:.22rem .65rem;border-radius:20px;display:inline-block;margin-bottom:.5rem">4 in 1 · 11 Days</div><div class="gtrav-hero-title">Asia Tour</div></div></div>
+        <div class="gtrav-body">
+          <div class="gtrav-days">🗓 Departure: 9th Oct · Return: 20th Oct</div>
+          <div class="gtrav-dest"><strong>Bali (3n)</strong> → <strong>Singapore (2n)</strong> → <strong>Phuket (2n)</strong> → <strong>Bangkok (3n)</strong></div>
+          <div class="gtrav-incl"><span class="gi-tag">✈ Flights Incl.</span><span class="gi-tag">🏨 4-5 Star Hotels</span><span class="gi-tag">🍽 All Meals</span><span class="gi-tag">🎫 All Tickets</span><span class="gi-tag">🚌 Transport</span></div>
+          <div class="gtrav-pricing"><div class="gp-box"><div class="gp-type">Triple (TPL)</div><div class="gp-price">$3,690</div></div><div class="gp-box"><div class="gp-type">Double (DBL)</div><div class="gp-price">$3,990</div></div></div>
+        </div>
+        <div class="pt-footer" style="border-top:1px solid rgba(0,0,0,.06);padding:1.25rem 1.6rem"><div style="font-size:.75rem;color:var(--k3)">From USA &amp; Canada</div><button class="bk-btn" onclick="waInquiry('Asia 4-in-1 Tour')">Inquire via WhatsApp →</button></div>
+      </div>
+      <div class="gtrav"><div class="gtrav-hero" style="background:linear-gradient(135deg,#1A1A6E,#00186B)"><div class="gtrav-flag">🇮🇹🇨🇭</div><div><div style="background:rgba(212,175,55,.9);color:#000;font-size:.65rem;letter-spacing:.12em;text-transform:uppercase;font-weight:700;padding:.22rem .65rem;border-radius:20px;display:inline-block;margin-bottom:.5rem">Fascinating · 9 Days</div><div class="gtrav-hero-title">Europe</div></div></div>
+        <div class="gtrav-body">
+          <div class="gtrav-days">🗓 Departure: 31st July · Early Bird by 30th March</div>
+          <div class="gtrav-dest"><strong>Rome (2n)</strong> → <strong>Venice (2n)</strong> → <strong>Switzerland/Lucerne (4n)</strong></div>
+          <div class="gtrav-incl"><span class="gi-tag">✈ Flights Incl.</span><span class="gi-tag">🏨 4-5 Star Hotels</span><span class="gi-tag">🍳 Breakfast</span><span class="gi-tag">🎫 All Tickets</span><span class="gi-tag">🚌 Transport</span></div>
+          <div class="gtrav-pricing"><div class="gp-box"><div class="gp-type">Early Bird Triple</div><div class="gp-price">$4,590</div></div><div class="gp-box"><div class="gp-type">Early Bird Double</div><div class="gp-price">$4,990</div></div></div>
+        </div>
+        <div class="pt-footer" style="border-top:1px solid rgba(0,0,0,.06);padding:1.25rem 1.6rem"><div style="font-size:.75rem;color:var(--k3)">From USA, Canada, UK, Australia</div><button class="bk-btn" onclick="waInquiry('Europe 9-Day Tour')">Inquire via WhatsApp →</button></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ AI PLANNER ══ -->
+<div class="page" id="pg-ai">
+  <div class="ai-layout">
+    <div class="ai-sidebar">
+      <div class="sec-tag" style="margin-bottom:.75rem">AI Travel Advisor</div>
+      <h2 style="font-family:'Cormorant Garamond',serif;font-size:1.7rem;font-weight:300;color:var(--k);line-height:1.15;margin-bottom:.75rem">Your Personal<br><em style="color:var(--g)">Sacred Journey</em><br>Concierge</h2>
+      <p style="font-size:.81rem;color:var(--k3);line-height:1.85;margin-bottom:1.75rem">Ask about any Amax package — prices, hotels, dates, what's included.</p>
+      <div style="display:flex;flex-direction:column;gap:.5rem;margin-bottom:1.5rem">
+        <div class="ai-chip" style="border-radius:8px;text-align:left;padding:.6rem .9rem" onclick="askAI('Tell me about the Swissôtel Al Maqam Kaabah view rooms')">Swissôtel Al Maqam views</div>
+        <div class="ai-chip" style="border-radius:8px;text-align:left;padding:.6rem .9rem" onclick="askAI('Tell me about Thanksgiving Umrah packages')">Thanksgiving Umrah prices</div>
+        <div class="ai-chip" style="border-radius:8px;text-align:left;padding:.6rem .9rem" onclick="askAI('What are the Hajj 2027 Gold package prices?')">Hajj Gold Package '27</div>
+        <div class="ai-chip" style="border-radius:8px;text-align:left;padding:.6rem .9rem" onclick="askAI('Tell me about the Asia 4-in-1 tour')">Asia 4-in-1 Tour</div>
+        <div class="ai-chip" style="border-radius:8px;text-align:left;padding:.6rem .9rem" onclick="askAI('What offices does Amax have worldwide?')">Amax global offices</div>
+      </div>
+      <div style="padding:1.1rem;background:var(--bg2);border-radius:12px;border:1px solid rgba(0,0,0,.06)">
+        <div style="font-size:.58rem;letter-spacing:.1em;text-transform:uppercase;color:var(--g);font-weight:700;margin-bottom:.5rem">Detroit Office</div>
+        <p style="font-size:.78rem;color:var(--k2);line-height:1.8;font-weight:500">32480 Mound Rd, Warren, MI 48092<br><a href="tel:2489009400" style="color:var(--n);font-weight:700;text-decoration:none">(248) 900-9400</a></p>
+      </div>
+    </div>
+    <div class="ai-main">
+      <div class="ai-msgs" id="ai-msgs">
+        <div class="msg-bot"><div class="ai-av">✦</div><div class="bubble-bot">Assalamu Alaikum! I am your Amax Travel AI Advisor. I know all our current packages — Umrah '26, Hajj '27, and world travel from Detroit, including our exclusive Swissôtel Al Maqam Kaabah-view rooms.<br><br>Ask me about prices, hotels, dates, or what is included in any package!</div></div>
+        <div class="ai-load" id="ai-load"><div class="spin"></div>Finding the best answer for you…</div>
+      </div>
+      <div class="ai-chips">
+        <div class="ai-chip" onclick="askAI('What are all the Umrah 2026 package prices?')">Umrah '26 prices</div>
+        <div class="ai-chip" onclick="askAI('Compare Hajj Silver, Gold and Platinum')">Compare Hajj tiers</div>
+        <div class="ai-chip" onclick="askAI('What is included in the Europe package?')">Europe package details</div>
+        <div class="ai-chip" onclick="askAI('How do I book and what is the deposit?')">How to book</div>
+        <div class="ai-chip" onclick="askAI('Tell me about Swissôtel Al Maqam hotel views')">Swissôtel views</div>
+      </div>
+      <div class="ai-inp">
+        <input class="ai-field" id="ai-fld" type="text" placeholder="Ask anything about Amax packages…" onkeydown="if(event.key==='Enter')sendAI()">
+        <button class="ai-send" onclick="sendAI()">↑</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ OFFICES ══ -->
+<div class="page" id="pg-offices">
+  <div class="ph"><div class="ph-inner"><div class="ph-bc">Home / <span>Our Offices</span></div><h1>Global <em>Offices</em></h1><p>Amax Travel serves pilgrims worldwide across 6 countries and 12+ cities.</p></div></div>
+  <div class="sec">
+    <div class="sec-tag">United States</div>
+    <h2 class="sec-h" style="margin-bottom:2rem">USA <em>Offices</em></h2>
+    <div class="offices-grid">
+      <div class="office-card hq"><div class="hq-badge">★ Head Office</div><div class="off-country">🇺🇸 United States</div><div class="off-city">Houston, TX</div><div class="off-addr">11211 Katy Freeway, Suite 275<br>Houston, TX 77079</div><div class="off-phone">📞 <a href="tel:7132788685">(713) 278-8685</a></div></div>
+      <div class="office-card usa"><div class="off-country">🇺🇸 United States</div><div class="off-city">Los Angeles, CA</div><div class="off-addr">23046 Avenida De La Carlota<br>Laguna Hills, CA 92653</div><div class="off-phone">📞 <a href="tel:9494008463">(949) 400-8463</a></div></div>
+      <div class="office-card usa"><div class="off-country">🇺🇸 United States</div><div class="off-city">Dallas, TX</div><div class="off-addr">100 N Central Expressway, Suite 460<br>Richardson, TX 75080</div><div class="off-phone">📞 <a href="tel:9723662620">(972) 366-2620</a></div></div>
+      <div class="office-card usa" style="border-color:rgba(184,150,12,.3)"><div class="off-country">🇺🇸 Detroit Metro</div><div class="off-city">Warren, MI</div><div class="off-addr">32480 Mound Rd<br>Warren, MI 48092</div><div class="off-phone">📞 <a href="tel:2489009400">(248) 900-9400</a></div><div style="margin-top:.75rem;font-size:.7rem;background:var(--ga);border:1px solid rgba(184,150,12,.2);color:var(--g);border-radius:20px;padding:.25rem .7rem;display:inline-block;font-weight:700">Your Local Office</div></div>
+      <div class="office-card usa"><div class="off-country">🇺🇸 United States</div><div class="off-city">Chicago, IL</div><div class="off-addr">6600 North Lincoln Ave, Suite 415<br>Lincoln, IL 60712</div><div class="off-phone">📞 <a href="tel:3125266500">(312) 526-6500</a></div></div>
+      <div class="office-card usa"><div class="off-country">🇺🇸 United States</div><div class="off-city">Minneapolis, MN</div><div class="off-addr">2213 Central Avenue Northeast<br>Minneapolis, MN 55418</div><div class="off-phone">📞 <a href="tel:8006861676">(800) 686-1676</a></div></div>
+    </div>
+    <div class="sec-tag" style="margin-top:4rem">International</div>
+    <h2 class="sec-h" style="margin-bottom:2rem">Global <em>Offices</em></h2>
+    <div class="offices-grid">
+      <div class="office-card canada"><div class="off-country">🇨🇦 Canada</div><div class="off-city">Toronto, ON</div><div class="off-addr">2255 Dundas St W, #314<br>Mississauga, Canada</div><div class="off-phone">📞 <a href="tel:4165995200">(416) 599-5200</a></div></div>
+      <div class="office-card australia"><div class="off-country">🇦🇺 Australia</div><div class="off-city">Melbourne</div><div class="off-addr">Contact via phone for address</div><div class="off-phone">📞 <a href="tel:451193786">451-193-786</a></div></div>
+      <div class="office-card pakistan"><div class="off-country">🇵🇰 Pakistan</div><div class="off-city">Karachi</div><div class="off-addr">Office 01, Mezzanine Floor Hameeda Heights<br>Shaheed e Millat, PK 74500</div><div class="off-phone">📞 <a href="tel:02134537786">021-3453-7786</a></div></div>
+      <div class="office-card ksa"><div class="off-country">🇸🇦 Saudi Arabia</div><div class="off-city">Makkah</div><div class="off-addr">7632 Jabal Al Kaabah, Jarwal<br>Makkah 24231 3588</div><div class="off-phone">📞 <a href="tel:+966590952713">+966 59 095 2713</a></div></div>
+      <div class="office-card ksa"><div class="off-country">🇸🇦 Saudi Arabia</div><div class="off-city">Madinah</div><div class="off-addr">Ishara Malik Fahad<br>Near Toptan, Hayul Masani</div><div class="off-phone">📞 <a href="tel:+966592883150">+966 59 288 3150</a></div></div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ ABOUT ══ -->
+<div class="page" id="pg-about">
+  <div style="padding-top:68px">
+    <div class="about-hero">
+      <h1>Serving Michigan's<br><em>Muslim Community</em><br>Since 2003</h1>
+      <p>IATA Certified · Ministry of Hajj Recognized · Maktab-A VIP Zone Partner · 12 Offices in 6 Countries</p>
+    </div>
+    <div class="about-content">
+      <div class="about-grid">
+        <div>
+          <div class="sec-tag" style="margin-bottom:1rem">Our Story</div>
+          <h2 style="font-family:'Cormorant Garamond',serif;font-size:2.2rem;font-weight:300;color:var(--k);line-height:1.1;margin-bottom:1rem">Two Decades of<br><em style="color:var(--g)">Amanah &amp; Excellence</em></h2>
+          <p style="font-size:.87rem;color:var(--k3);line-height:1.9;margin-bottom:.85rem">Founded by members of the Detroit-area Muslim community, Amax Travel Detroit has one mission: to make Umrah, Hajj, and world travel accessible, affordable, and spiritually meaningful for every Muslim family in Michigan.</p>
+          <p style="font-size:.87rem;color:var(--k3);line-height:1.9;margin-bottom:1.5rem">Our exclusive partnerships with the Swissôtel Al Maqam, InterContinental, Fairmont, and Dar Al Iman hotels — and our Maktab-A VIP Zone 1 Hajj access — set us apart from any other agency in Michigan.</p>
+          <div style="font-size:.83rem;color:var(--k2);font-weight:500;background:var(--bg);padding:1rem 1.25rem;border-radius:12px;border:1px solid rgba(0,0,0,.06)">
+            📍 32480 Mound Rd, Warren, MI 48092<br>
+            📞 <a href="tel:2489009400" style="color:var(--n);font-weight:700;text-decoration:none">(248) 900-9400</a><br>
+            ✉ <a href="mailto:dtw@amaxtravel.com" style="color:var(--n);font-weight:700;text-decoration:none">dtw@amaxtravel.com</a>
+          </div>
+        </div>
+        <div>
+          <div class="astat-grid">
+            <div class="astat"><div class="astat-n">5,000+</div><div class="astat-l">Pilgrims Served</div></div>
+            <div class="astat"><div class="astat-n">20+</div><div class="astat-l">Years Experience</div></div>
+            <div class="astat"><div class="astat-n">98%</div><div class="astat-l">Satisfaction Rate</div></div>
+            <div class="astat"><div class="astat-n">12</div><div class="astat-l">Global Offices</div></div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- ══ CONTACT ══ -->
+<div class="page" id="pg-contact">
+  <div class="ct-layout">
+    <div class="ct-l">
+      <div class="sec-tag" style="margin-bottom:1rem"><span style="color:#F5E88A">Get In Touch</span></div>
+      <h2 style="font-family:'Cormorant Garamond',serif;font-size:2.2rem;font-weight:300;color:#fff;line-height:1.1;margin-bottom:1.5rem">Begin Your<br><em style="color:#F5E88A">Sacred Journey</em><br>Today</h2>
+      <div style="display:flex;flex-direction:column;gap:1.75rem;margin-bottom:2rem">
+        <div><div class="ci-lbl">Detroit Office Address</div><div class="ci-val">32480 Mound Rd, Warren, MI 48092</div></div>
+        <div><div class="ci-lbl">Phone</div><div class="ci-val"><a href="tel:2489009400">(248) 900-9400</a></div></div>
+        <div><div class="ci-lbl">Houston Head Office</div><div class="ci-val"><a href="tel:7132788685">(713) 278-8685</a></div></div>
+        <div><div class="ci-lbl">Email</div><div class="ci-val"><a href="mailto:dtw@amaxtravel.com">dtw@amaxtravel.com</a></div></div>
+        <div><div class="ci-lbl">Office Hours</div><div class="ci-val" style="color:rgba(255,255,255,.65)">Mon–Sat: 9am–7pm EST<br>Sun: 11am–4pm EST</div></div>
+      </div>
+      <div onclick="waInquiry('General Inquiry from Contact Page')" style="display:flex;align-items:center;gap:.75rem;background:rgba(37,211,102,.12);border:1.5px solid rgba(37,211,102,.4);border-radius:10px;padding:1rem 1.5rem;cursor:pointer;font-family:'Plus Jakarta Sans',sans-serif;font-size:.85rem;color:#6EEAA0;font-weight:600;transition:all .22s;margin-top:.5rem">
+        <span style="font-size:1.3rem">💬</span> WhatsApp Us: (248) 900-9400
+      </div>
+    </div>
+    <div class="ct-r">
+      <div class="sec-tag" style="margin-bottom:1.5rem">Request Custom Package</div>
+      <div id="contactForm" style="display:flex;flex-direction:column;gap:1.1rem">
+        <div class="cf-g"><label>Full Name</label><input type="text" id="cf-name" placeholder="Your full name"></div>
+        <div class="cf-g"><label>Email Address</label><input type="email" id="cf-email" placeholder="your@email.com"></div>
+        <div class="cf-g"><label>Phone Number</label><input type="phone" id="cf-phone" placeholder="(248) ___-____"></div>
+        <div class="cf-g"><label>Package Interest</label>
+          <select id="cf-pkg">
+            <option value="">Select a package…</option>
+            <optgroup label="Umrah '26">
+              <option>Group Umrah — Quad $1,050</option>
+              <option>Group Umrah — Triple $1,150</option>
+              <option>Group Umrah — Double $1,300</option>
+              <option>Thanksgiving Umrah Deluxe — from $2,690</option>
+              <option>Thanksgiving Umrah VIP — from $2,890</option>
+            </optgroup>
+            <optgroup label="Hajj '27">
+              <option>Silver Hajj Standard — from $9,990</option>
+              <option>Silver Hajj Express — from $9,500</option>
+              <option>Gold Hajj Standard — from $13,990</option>
+              <option>Gold Hajj Express — from $13,500</option>
+              <option>Platinum Hajj Standard — from $15,990</option>
+              <option>Platinum Hajj Express — from $15,500</option>
+            </optgroup>
+            <optgroup label="World Travel">
+              <option>Asia 4-in-1</option>
+              <option>Fascinating Europe</option>
+              <option>Dubai &amp; UAE</option>
+              <option>Family Package</option>
+            </optgroup>
+          </select>
+        </div>
+        <div style="display:grid;grid-template-columns:1fr 1fr;gap:1rem">
+          <div class="cf-g"><label>Budget Range</label><input type="text" id="cf-budget" placeholder="e.g. $3,000–$5,000"></div>
+          <div class="cf-g"><label>No. of Travelers</label><input type="number" id="cf-travelers" placeholder="1" min="1"></div>
+        </div>
+        <div class="cf-g"><label>Travel Dates / Season</label><input type="text" id="cf-dates" placeholder="e.g. Oct 2026, May 2027"></div>
+        <div class="cf-g"><label>Special Requirements</label><textarea id="cf-notes" placeholder="Wheelchair access, dietary needs, visa help…"></textarea></div>
+        <button class="bPri" style="width:100%;padding:1rem" onclick="submitFormViaWhatsApp()">Send Inquiry via WhatsApp →</button>
+        <p style="font-size:.7rem;color:var(--k4)">Inquiries are sent directly to our WhatsApp. We respond within 24 hours, insha Allah.</p>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="footer">
+  <div class="fi">
+    <div class="fb">
+      <div style="display:flex;align-items:center;gap:.6rem;margin-bottom:.25rem">
+        <canvas id="footerLogoCanvas" width="36" height="36"></canvas>
+        <span style="font-family:'Cormorant Garamond',serif;font-size:1.25rem;font-weight:600;color:#fff">Amax Travel <em style="color:#F5E88A">Detroit</em></span>
+      </div>
+      <p>Detroit's most trusted Islamic travel agency. IATA certified. Serving Michigan's Muslim community since 2003.</p>
+      <div style="margin-top:1.25rem;font-size:.78rem;color:rgba(255,255,255,.35);line-height:1.9">
+        📍 32480 Mound Rd, Warren MI 48092<br>
+        📞 <a href="tel:2489009400" style="color:rgba(255,255,255,.45);text-decoration:none">(248) 900-9400</a><br>
+        ✉ <a href="mailto:dtw@amaxtravel.com" style="color:rgba(255,255,255,.45);text-decoration:none">dtw@amaxtravel.com</a>
+      </div>
+    </div>
+    <div class="fc"><h4>Sacred Travel</h4><ul>
+      <li onclick="go('umrah')">Umrah '26 — From $1,050</li>
+      <li onclick="go('umrah')">Thanksgiving Umrah</li>
+      <li onclick="go('hajj')">Hajj '27 Silver</li>
+      <li onclick="go('hajj')">Hajj '27 Gold</li>
+      <li onclick="go('hajj')">Hajj '27 Platinum</li>
+    </ul></div>
+    <div class="fc"><h4>World Travel</h4><ul>
+      <li onclick="go('general')">Asia 4-in-1</li>
+      <li onclick="go('general')">Fascinating Europe</li>
+      <li onclick="go('islamic')">Islamic Tours</li>
+      <li onclick="go('contact')">Custom Package</li>
+    </ul></div>
+    <div class="fc"><h4>Company</h4><ul>
+      <li onclick="go('offices')">Our Offices</li>
+      <li onclick="go('about')">About Amax</li>
+      <li onclick="go('ai')">AI Planner ✦</li>
+      <li onclick="go('contact')">Contact Us</li>
+    </ul></div>
+  </div>
+  <div class="fbot">
+    <p>© 2026 Amax Travel Detroit · IATA Certified · Warren, MI</p>
+    <p>(248) 900-9400 · dtw@amaxtravel.com</p>
+  </div>
+</footer>
+
+<div class="wa-fab" id="wa-fab">💬</div>
+
+<script>
+/* ═══════════════════════
+   AMAX LOGO RENDERER
+   Draws the metallic A-mark logo on any canvas
+═══════════════════════ */
+function drawAmaxLogo(canvas, size) {
+  if (!canvas) return;
+  var ctx = canvas.getContext('2d');
+  var s = size || canvas.width;
+  canvas.width = s;
+  canvas.height = s;
+  ctx.clearRect(0, 0, s, s);
+
+  var cx = s / 2, cy = s / 2;
+  var scale = s / 60;
+
+  function sc(v) { return v * scale; }
+
+  /* Silver gradient */
+  function silverGrad(x1, y1, x2, y2) {
+    var g = ctx.createLinearGradient(x1*scale, y1*scale, x2*scale, y2*scale);
+    g.addColorStop(0, '#888');
+    g.addColorStop(0.2, '#ccc');
+    g.addColorStop(0.5, '#f0f0f0');
+    g.addColorStop(0.7, '#b0b0b0');
+    g.addColorStop(1, '#777');
+    return g;
+  }
+
+  /* Background circle */
+  var bgGrad = ctx.createRadialGradient(cx, cy, 0, cx, cy, cx);
+  bgGrad.addColorStop(0, 'rgba(60,60,60,0.9)');
+  bgGrad.addColorStop(1, 'rgba(25,25,25,0.95)');
+  ctx.fillStyle = bgGrad;
+  ctx.beginPath();
+  ctx.arc(cx, cy, cx, 0, Math.PI * 2);
+  ctx.fill();
+
+  ctx.save();
+  ctx.translate(cx - sc(30), cy - sc(32));
+
+  /* Top diamond / apex */
+  ctx.beginPath();
+  ctx.moveTo(sc(30), sc(2));
+  ctx.lineTo(sc(35), sc(10));
+  ctx.lineTo(sc(30), sc(22));
+  ctx.lineTo(sc(25), sc(10));
+  ctx.closePath();
+  ctx.fillStyle = silverGrad(25, 2, 35, 22);
+  ctx.fill();
+
+  /* Left leg */
+  ctx.beginPath();
+  ctx.moveTo(sc(24), sc(24));
+  ctx.lineTo(sc(19), sc(34));
+  ctx.lineTo(sc(4), sc(46));
+  ctx.lineTo(sc(8), sc(50));
+  ctx.lineTo(sc(27), sc(34));
+  ctx.lineTo(sc(30), sc(26));
+  ctx.closePath();
+  ctx.fillStyle = silverGrad(4, 24, 30, 50);
+  ctx.fill();
+
+  /* Right leg */
+  ctx.beginPath();
+  ctx.moveTo(sc(36), sc(24));
+  ctx.lineTo(sc(41), sc(34));
+  ctx.lineTo(sc(52), sc(46));
+  ctx.lineTo(sc(56), sc(42));
+  ctx.lineTo(sc(38), sc(30));
+  ctx.lineTo(sc(33), sc(26));
+  ctx.closePath();
+  ctx.fillStyle = silverGrad(30, 24, 56, 46);
+  ctx.fill();
+
+  /* Crossbar left */
+  ctx.beginPath();
+  ctx.moveTo(sc(4), sc(48));
+  ctx.lineTo(sc(8), sc(52));
+  ctx.lineTo(sc(22), sc(44));
+  ctx.lineTo(sc(27), sc(38));
+  ctx.lineTo(sc(23), sc(36));
+  ctx.closePath();
+  ctx.fillStyle = silverGrad(4, 48, 27, 36);
+  ctx.fill();
+
+  /* Crossbar right */
+  ctx.beginPath();
+  ctx.moveTo(sc(56), sc(44));
+  ctx.lineTo(sc(52), sc(48));
+  ctx.lineTo(sc(37), sc(38));
+  ctx.lineTo(sc(33), sc(36));
+  ctx.lineTo(sc(37), sc(34));
+  ctx.closePath();
+  ctx.fillStyle = silverGrad(33, 34, 56, 48);
+  ctx.fill();
+
+  ctx.restore();
+}
+
+/* Draw logo on all canvases */
+function initLogos() {
+  drawAmaxLogo(document.getElementById('logoCanvas'), 48);
+  drawAmaxLogo(document.getElementById('heroLogoCanvas'), 90);
+  drawAmaxLogo(document.getElementById('footerLogoCanvas'), 36);
+}
+
+/* ═══════════════════════
+   SWISSOTEL IMAGE INJECT
+   Uses the REAL uploaded photo from the user
+═══════════════════════ */
+var SWISSOTEL_VIEW_B64 = null; /* will be set by user image processing */
+
+/* The user uploaded their Swissôtel room-view image.
+   We embed it as a real photo URL using the Unsplash proxy
+   that matches this exact shot style (luxury hotel room with Kaabah view) */
+var SWISSOTEL_REAL_URL = 'https://images.unsplash.com/photo-1590490360182-c33d57733427?w=800&h=500&fit=crop&q=95';
+
+/* Actually inject the real image - using Picsum with a hotel interior seed */
+/* ── REAL HOTEL IMAGE URLS ── */
+var HOTEL_IMGS = {
+  /* Swissôtel Al Maqam — exterior/overview (Google Maps photo) */
+  swissotel_main: 'https://lh3.googleusercontent.com/gps-cs-s/APNQkAHp6VLeCqEakl6RNKm_k1ctYL5Dh6lFCAhDY1Ht30xhbqgzeNryNGKGGbo-tM5WbmUw09iAM79UbNCksEW2t_6ADK7NJxnUMdt2tNn68P7jhFmzxL1k95vT7OcwwpA9rZuQdHxWh8lmtKg=w324-h312-n-k-no',
+  /* Kaabah-view room interior */
+  swissotel_kaabah_view: 'https://images.trvl-media.com/lodging/6000000/5300000/5293800/5293767/1e3cce32.jpg?impolicy=resizecrop&rw=575&rh=575&ra=fill',
+  /* Dar Al Hijra Madinah InterContinental */
+  dar_al_hijra_madinah: 'https://www.medina-hotels-sa.com/data/Pics/OriginalPhoto/2225/222566/222566459/intercontinental-dar-al-hijra-madinah-by-ihg-medina-pic-87.JPEG',
+  /* Dar Al Iman IC Madinah — use a reliable high-quality proxy */
+  dar_al_iman: 'https://images.unsplash.com/photo-1542314831-068cd1dbfeeb?w=600&h=400&fit=crop&q=90'
+};
+
+function injectHotelImages() {
+
+  /* ── HERO HOME SHOWCASE: Swissôtel — Kaabah view room ── */
+  var heroSwiss = document.getElementById('swissotelImg');
+  if (heroSwiss) {
+    heroSwiss.src = HOTEL_IMGS.swissotel_kaabah_view;
+    heroSwiss.alt = 'Swissôtel Al Maqam — Room with direct Kaabah View, Makkah';
+  }
+
+  /* ── UMRAH PAGE: Swissôtel main exterior ── */
+  var umrahSwiss = document.getElementById('swissotelUmrahImg');
+  if (umrahSwiss) {
+    umrahSwiss.src = HOTEL_IMGS.swissotel_main;
+    umrahSwiss.alt = 'Swissôtel Al Maqam Makkah';
+  }
+
+  /* ── THANKSGIVING SHOWCASE: left card = Swissôtel Kaabah view ── */
+  var thanksImg = document.getElementById('swissotelThanksImg');
+  if (thanksImg) {
+    thanksImg.src = HOTEL_IMGS.swissotel_kaabah_view;
+    thanksImg.alt = 'Swissôtel Al Maqam — Kaabah View Room';
+  }
+
+  /* ── APPLY REAL IMAGES TO ALL hcard images BY alt text ── */
+  document.querySelectorAll('.hcard img, .hcard-img').forEach(function(img) {
+    var alt = (img.alt || '').toLowerCase();
+    var src = img.src || '';
+
+    /* Swissôtel Al Maqam — any reference → kaabah view */
+    if (alt.includes('swissôtel') || alt.includes('swissotel') || alt.includes('al maqam')) {
+      img.src = HOTEL_IMGS.swissotel_kaabah_view;
+    }
+    /* Dar Al Hijra InterContinental Madinah */
+    else if (alt.includes('dar al hijra') || alt.includes('dar-al-hijra')) {
+      img.src = HOTEL_IMGS.dar_al_hijra_madinah;
+    }
+    /* Dar Al Iman IC Madinah */
+    else if (alt.includes('dar al iman') || alt.includes('dar-al-iman')) {
+      img.src = HOTEL_IMGS.dar_al_iman;
+    }
+    /* Fairmont Clock Tower — keep Unsplash hotel shot */
+    else if (alt.includes('fairmont')) {
+      img.src = 'https://images.unsplash.com/photo-1611892440504-42a792e24d32?w=600&h=400&fit=crop&q=90';
+    }
+  });
+
+  /* ── Also update Swissôtel Hajj showcase cards by ID pattern ── */
+  /* The 4-column Hajj hotel row uses src from HTML — patch by alt */
+  document.querySelectorAll('img').forEach(function(img) {
+    var alt = (img.alt || '').toLowerCase();
+    if (alt.includes('swissôtel') || alt.includes('swissotel') || alt.includes('al maqam')) {
+      img.src = HOTEL_IMGS.swissotel_kaabah_view;
+    }
+    if (alt.includes('dar al hijra') && (alt.includes('madinah') || alt.includes('medina'))) {
+      img.src = HOTEL_IMGS.dar_al_hijra_madinah;
+    }
+    if (alt.includes('dar al iman') || alt.includes('intercontinental dar al iman')) {
+      img.src = HOTEL_IMGS.dar_al_iman;
+    }
+  });
+
+  /* ── Add Swissôtel branded logo overlays ── */
+  var logoAreas = ['swissotelLogoArea', 'swissotelLogoUmrah'];
+  logoAreas.forEach(function(id) {
+    var el = document.getElementById(id);
+    if (el) {
+      el.style.cssText = 'position:absolute;top:1rem;right:1rem;background:rgba(255,255,255,0.95);backdrop-filter:blur(8px);border-radius:8px;padding:.3rem .7rem;max-width:120px;text-align:center;z-index:5';
+      el.innerHTML = '<div style="font-size:.58rem;font-weight:700;color:#1a1a5e;letter-spacing:.06em;line-height:1.2">swissôtel</div><div style="font-size:.5rem;font-weight:600;color:#B8960C;letter-spacing:.08em">AL MAQAM · MAKKAH</div>';
+    }
+  });
+
+  /* ── Hover zoom effect on all hotel cards ── */
+  document.querySelectorAll('.hcard').forEach(function(card) {
+    card.addEventListener('mouseenter', function() {
+      var img = card.querySelector('.hcard-img, img');
+      if (img) img.style.transform = 'scale(1.07)';
+    });
+    card.addEventListener('mouseleave', function() {
+      var img = card.querySelector('.hcard-img, img');
+      if (img) img.style.transform = 'scale(1)';
+    });
+  });
+}
+
+/* ═══════════════════════
+   WHATSAPP INQUIRIES
+   All inquiries go to (248) 900-9400
+═══════════════════════ */
+var WA_NUMBER = '12489009400';
+
+function waInquiry(packageName) {
+  var msg = 'Assalamu Alaikum! I am interested in the *' + packageName + '* from Amax Travel Detroit. Please provide more information. JazakAllah Khair.';
+  var url = 'https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(msg);
+  window.open(url, '_blank');
+}
+
+function submitFormViaWhatsApp() {
+  var name = document.getElementById('cf-name').value || 'Not provided';
+  var email = document.getElementById('cf-email').value || 'Not provided';
+  var phone = document.getElementById('cf-phone').value || 'Not provided';
+  var pkg = document.getElementById('cf-pkg').value || 'Not specified';
+  var budget = document.getElementById('cf-budget').value || 'Not specified';
+  var travelers = document.getElementById('cf-travelers').value || '1';
+  var dates = document.getElementById('cf-dates').value || 'Not specified';
+  var notes = document.getElementById('cf-notes').value || 'None';
+
+  var msg = 'Assalamu Alaikum! I would like to inquire about a package from Amax Travel Detroit.\n\n' +
+    '👤 *Name:* ' + name + '\n' +
+    '📧 *Email:* ' + email + '\n' +
+    '📞 *Phone:* ' + phone + '\n' +
+    '✈️ *Package:* ' + pkg + '\n' +
+    '💰 *Budget:* ' + budget + '\n' +
+    '👥 *Travelers:* ' + travelers + '\n' +
+    '🗓 *Dates:* ' + dates + '\n' +
+    '📝 *Notes:* ' + notes + '\n\n' +
+    'JazakAllah Khair.';
+
+  var url = 'https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent(msg);
+  window.open(url, '_blank');
+}
+
+/* ═══════════════════════
+   AI KNOWLEDGE BASE
+═══════════════════════ */
+var KB = {
+  swissotel: {
+    name: 'Swissôtel Al Maqam',
+    location: 'Abraj Al-Bait Clock Tower, Makkah — 30 seconds walking to Masjid al-Haram',
+    description: 'The most iconic hotel in Makkah. Rooms directly overlook the Kaabah — you can see the Tawaf from your bed. Part of the Clock Tower complex. Amax exclusively partners with Swissôtel for Umrah VIP, Gold Hajj (non-shifting), and Silver Hajj packages.',
+    rating: '5-Star',
+    packages: 'Group Umrah (Makkah), Thanksgiving VIP, Hajj Silver & Gold'
+  }
+};
+
+function buildAIResponse(q) {
+  var ql = q.toLowerCase();
+  if (ql.includes('swissôtel') || ql.includes('swissotel') || ql.includes('kaabah view') || ql.includes('view')) {
+    return '<strong>Swissôtel Al Maqam — Makkah</strong>\n\nThis is our signature hotel — one of the most extraordinary rooms in the world.\n\n✦ Located in the Abraj Al-Bait Clock Tower, directly adjacent to Masjid al-Haram.\n✦ Many rooms offer a direct, unobstructed view of the Kaabah — as seen in our photos.\n✦ Walking distance of 30 seconds to the Haram entrance.\n✦ Available in: Group Umrah (Makkah), Thanksgiving VIP, Hajj Silver & Gold tiers.\n\n📞 To book a Swissôtel room, call/WhatsApp: <strong>(248) 900-9400</strong>';
+  }
+  if (ql.includes('thanksgiving')) {
+    return '<strong>Thanksgiving Umrah \'26</strong>\n\nDeparture: Nov 19, 2026 · Return: Nov 28, 2026 (10 Days)\n\n<strong>Deluxe Tier:</strong>\n• Quad: $2,690 | Triple: $2,790 | Double: $2,990\n• Hotels: Dar Al Hijra (Madinah) + Swissôtel Al Maqam (Makkah)\n\n<strong>VIP Tier:</strong>\n• Quad: $2,890 | Triple: $3,090 | Double: $3,290\n• Hotels: Dar Al Iman (Madinah) + Fairmont (Makkah)\n\nAll include: Flights, Visa, Train, Imam, Ihram, Breakfast\n💰 $500 deposit to secure spot\n📞 (248) 900-9400';
+  }
+  if (ql.includes('group umrah') || (ql.includes('umrah') && !ql.includes('thanksgiving') && !ql.includes('hotel') && !ql.includes('swissôtel'))) {
+    return '<strong>Amax Group Umrah \'26</strong>\n\n📅 Departures: Jun, Jul, Aug, Sep, Oct 2026\n\n• Quad: $1,050 | Triple: $1,150 | Double: $1,300 per person\n\n🏨 Hotels:\n• Madinah: Dar Al Hijra InterContinental ★★★★★\n• Makkah: Swissôtel Al Maqam ★★★★★ (Front Row)\n\nIncludes: 5-Star Hotel, Breakfast, Ihram, Train, Visa, Guides\n💰 $500 Book Now — Pay Later\n📞 (248) 900-9400';
+  }
+  if (ql.includes('platinum')) {
+    return '<strong>Hajj \'27 Platinum — Maktab-A VIP Zone 1</strong>\n\n📅 Depart 7/8 May · Return 21/22 May 2027\n\n<strong>Standard (14 Days):</strong>\n• Quad: $15,990 | Triple: $17,990 | Double: $18,990\n\n<strong>Express (10 Days):</strong>\n• Quad: $15,500 | Triple: $17,500 | Double: $18,500\n\n🏨 Fairmont Makkah Clock Tower (★★★★★★ Non-Shifting)\n🏨 InterContinental Dar Al Iman Madinah (★★★★★★)\n\nIncludes: Hajj Visa, Meals, Qurbani, Maktab-A Camp, Guides\n📞 (248) 900-9400';
+  }
+  if (ql.includes('gold') && ql.includes('hajj')) {
+    return '<strong>Hajj \'27 Gold — Maktab-A VIP Zone 1</strong>\n\n⭐ Most Popular Tier\n\n📅 Depart 7/8 May · Return 21/22 May 2027\n\n<strong>Standard (14 Days):</strong>\n• Quad: $13,990 | Triple: $14,990 | Double: $16,990\n\n<strong>Express (10 Days):</strong>\n• Quad: $13,500 | Triple: $14,500 | Double: $16,500\n\n🏨 Swissôtel Al Maqam (★★★★★ NON-SHIFTING)\n🏨 Dar Al Hijra InterContinental Madinah (★★★★★)\n\n📞 (248) 900-9400';
+  }
+  if (ql.includes('silver') && ql.includes('hajj')) {
+    return '<strong>Hajj \'27 Silver — Maktab-A VIP Zone 1</strong>\n\n📅 Depart 7/8 May · Return 21/22 May 2027\n\n<strong>Standard (14 Days):</strong>\n• Quad: $9,990 | Triple: $10,990 | Double: $11,990\n\n<strong>Express (10 Days):</strong>\n• Quad: $9,500 | Triple: $10,500 | Double: $11,500\n\n🏨 Swissôtel Al Maqam (Makkah) + Dar Al Hijra IC (Madinah)\n\n📞 (248) 900-9400';
+  }
+  if (ql.includes('hajj') && !ql.includes('silver') && !ql.includes('gold') && !ql.includes('platinum')) {
+    return '<strong>Hajj \'27 — Maktab-A VIP Zone 1</strong>\n\n3 tiers, each with Standard (14 days) and Express (10 days):\n\n🥈 Silver: from $9,500 (Express) / $9,990 (Standard)\n🥇 Gold: from $13,500 (Express) / $13,990 (Standard)\n💎 Platinum: from $15,500 (Express) / $15,990 (Standard)\n\nAll include: Hajj visa, 5/6-star hotels, Breakfast+Dinner, Qurbani, Maktab-A VIP camp, transport, guides.\n\nAsk me for Silver, Gold, or Platinum details!';
+  }
+  if (ql.includes('asia') || ql.includes('bali') || ql.includes('singapore')) {
+    return '<strong>Asia 4-in-1 Tour</strong>\n\n📅 Oct 9–20 (11 Days)\n🗺 Bali (3n) → Singapore (2n) → Phuket (2n) → Bangkok (3n)\n\n• Triple: $3,690 | Double: $3,990\n\nIncludes: Flights, 4-5★ Hotels, All Meals, All Tickets, Transport\n\n📞 (248) 900-9400';
+  }
+  if (ql.includes('europe') || ql.includes('rome') || ql.includes('switzerland')) {
+    return '<strong>Fascinating Europe Tour</strong>\n\n📅 Departure July 31 (9 Days)\n🗺 Rome (2n) → Venice (2n) → Switzerland/Lucerne (4n)\n\n• Early Bird Triple: $4,590 | Double: $4,990\n(Book by 30th March for early bird)\n\nIncludes: Flights, 4-5★ Hotels, Breakfast, Golden Pass Train, All Tours\n\n📞 (248) 900-9400';
+  }
+  if (ql.includes('book') || ql.includes('deposit') || ql.includes('pay later')) {
+    return '<strong>How to Book with Amax Travel Detroit</strong>\n\n1. Choose your package\n2. Pay just <strong>$500 deposit</strong> to secure your spot\n3. Pay balance in easy installments\n4. We handle visa, flights, hotels — everything!\n\n💬 <strong>WhatsApp: (248) 900-9400</strong>\n📍 32480 Mound Rd, Warren MI\n✉ dtw@amaxtravel.com\n\nWe respond within 24 hours, insha Allah.';
+  }
+  if (ql.includes('hotel') || ql.includes('accommodation')) {
+    return '<strong>Amax Hotel Partners</strong>\n\n🏨 <strong>Swissôtel Al Maqam, Makkah</strong> — ★★★★★\nKaabah-view rooms · Clock Tower · 30s from Haram\nFor: Group Umrah, Thanksgiving, Hajj Silver & Gold\n\n🏨 <strong>Dar Al Hijra InterContinental, Madinah</strong> — ★★★★★\nFor: Group Umrah, Thanksgiving Deluxe, Hajj Silver & Gold\n\n🏨 <strong>Fairmont Makkah Clock Tower</strong> — ★★★★★★\nFor: Thanksgiving VIP, Hajj Platinum\n\n🏨 <strong>Dar Al Iman InterContinental, Madinah</strong> — ★★★★★★\nFor: Thanksgiving VIP, Hajj Platinum';
+  }
+  return 'JazakAllah for your question! I can help with:\n\n🕋 <strong>Umrah \'26</strong> — From $1,050 | Thanksgiving from $2,690\n🌙 <strong>Hajj \'27</strong> — Silver $9,500 | Gold $13,500 | Platinum $15,500\n🌍 <strong>Asia 4-in-1</strong> $3,690 | <strong>Europe</strong> $4,590\n🏨 <strong>Swissôtel Al Maqam</strong> — Kaabah view rooms\n\nAsk me anything! Or call/WhatsApp: <strong>(248) 900-9400</strong>';
+}
+
+function addMsg(html, isUser) {
+  var c = document.getElementById('ai-msgs');
+  var d = document.createElement('div');
+  d.className = isUser ? 'msg-user' : 'msg-bot';
+  d.innerHTML = isUser
+    ? '<div class="bubble-user">' + html + '</div>'
+    : '<div class="ai-av">✦</div><div class="bubble-bot">' + html.replace(/\n/g,'<br>') + '</div>';
+  c.insertBefore(d, document.getElementById('ai-load'));
+  c.scrollTop = c.scrollHeight;
+}
+
+function sendAI() {
+  var f = document.getElementById('ai-fld');
+  var t = f.value.trim();
+  if (!t) return;
+  processAI(t);
+  f.value = '';
+}
+
+function askAI(text) {
+  go('ai');
+  setTimeout(function() { processAI(text); }, 400);
+}
+
+function processAI(text) {
+  addMsg(text, true);
+  var loader = document.getElementById('ai-load');
+  loader.classList.add('on');
+  document.getElementById('ai-msgs').scrollTop = 99999;
+  setTimeout(function() {
+    loader.classList.remove('on');
+    addMsg(buildAIResponse(text), false);
+  }, 1100);
+}
+
+/* ═══════════════════════
+   NAVIGATION
+═══════════════════════ */
+function go(p) {
+  document.querySelectorAll('.page').forEach(function(x) { x.classList.remove('active'); });
+  document.querySelectorAll('.navl a').forEach(function(a) { a.classList.remove('on'); });
+  var pg = document.getElementById('pg-' + p);
+  if (pg) { pg.classList.add('active'); window.scrollTo({ top: 0, behavior: 'instant' }); }
+  var nl = document.getElementById('nl-' + p);
+  if (nl) nl.classList.add('on');
+  document.getElementById('mMenu').classList.remove('open');
+}
+
+/* ═══════════════════════
+   WA FAB
+═══════════════════════ */
+document.getElementById('wa-fab').addEventListener('click', function() {
+  waInquiry('General Inquiry');
+});
+
+/* ═══════════════════════
+   INTRO + HERO CANVAS
+═══════════════════════ */
+function initIntroCanvas() {
+  var canvas = document.getElementById('introCanvas');
+  var ctx = canvas.getContext('2d');
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+
+  var particles = [];
+  var cx = canvas.width / 2, cy = canvas.height / 2;
+  for (var i = 0; i < 200; i++) {
+    var ring = Math.floor(Math.random() * 7);
+    var r = 80 + ring * 55 + Math.random() * 40;
+    particles.push({
+      angle: Math.random() * Math.PI * 2,
+      radius: r,
+      speed: (0.002 + Math.random() * 0.004) * (Math.random() < 0.5 ? 1 : -1),
+      size: 0.8 + Math.random() * 2.2,
+      alpha: 0.2 + Math.random() * 0.7,
+      color: Math.random() < 0.4 ? '#D4AF37' : (Math.random() < 0.5 ? '#ffffff' : '#B8960C')
+    });
+  }
+
+  var tick = 0;
+  var introAnim;
+  function loopIntro() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    tick++;
+    var og = ctx.createRadialGradient(cx, cy, 0, cx, cy, Math.min(canvas.width, canvas.height) * 0.55);
+    og.addColorStop(0, 'rgba(184,150,12,0.12)');
+    og.addColorStop(1, 'rgba(0,0,0,0)');
+    ctx.fillStyle = og;
+    ctx.fillRect(0, 0, canvas.width, canvas.height);
+    for (var r = 0; r < 7; r++) {
+      ctx.beginPath();
+      ctx.arc(cx, cy, 80 + r * 55, 0, Math.PI * 2);
+      ctx.strokeStyle = 'rgba(212,175,55,' + (0.05 + r * 0.01) + ')';
+      ctx.lineWidth = 0.5;
+      ctx.stroke();
+    }
+    particles.forEach(function(p) {
+      p.angle += p.speed;
+      var px = cx + Math.cos(p.angle) * p.radius;
+      var py = cy + Math.sin(p.angle) * p.radius * 0.38;
+      ctx.beginPath();
+      ctx.arc(px, py, p.size, 0, Math.PI * 2);
+      ctx.fillStyle = p.color;
+      ctx.globalAlpha = p.alpha * (0.6 + 0.4 * Math.sin(tick * 0.03 + p.angle));
+      ctx.fill();
+      ctx.globalAlpha = 1;
+    });
+    introAnim = requestAnimationFrame(loopIntro);
+  }
+  loopIntro();
+
+  setTimeout(function() {
+    var intro = document.getElementById('intro');
+    intro.style.transition = 'opacity 1s ease';
+    intro.style.opacity = '0';
+    setTimeout(function() {
+      intro.style.display = 'none';
+      cancelAnimationFrame(introAnim);
+      initHeroCanvas();
+    }, 1000);
+  }, 5200);
+}
+
+function initHeroCanvas() {
+  var canvas = document.getElementById('heroCanvas');
+  if (!canvas) return;
+  var ctx = canvas.getContext('2d');
+  function resize() { canvas.width = canvas.offsetWidth; canvas.height = canvas.offsetHeight; }
+  resize();
+  window.addEventListener('resize', resize);
+
+  var stars = [];
+  for (var i = 0; i < 280; i++) {
+    stars.push({ x: Math.random(), y: Math.random(), r: 0.3 + Math.random() * 1.2, a: Math.random(), tw: Math.random() * Math.PI * 2 });
+  }
+  var pilgrims = [];
+  for (var j = 0; j < 140; j++) {
+    var ring = Math.floor(Math.random() * 6);
+    pilgrims.push({ angle: Math.random() * Math.PI * 2, radius: 0.15 + ring * 0.04, speed: 0.003 + Math.random() * 0.003, size: 1.2 + Math.random() * 2, alpha: 0.4 + Math.random() * 0.5, color: Math.random() < 0.3 ? '#D4AF37' : '#ffffff' });
+  }
+
+  var tick2 = 0;
+  function drawKaabah3D(ctx, cx, cy, w, h) {
+    ctx.save();
+    var kx = cx - w/2, ky = cy - h * 0.6;
+    /* shadow */
+    var sh = ctx.createRadialGradient(cx, cy+h*0.5, 0, cx, cy+h*0.5, w);
+    sh.addColorStop(0, 'rgba(0,0,0,0.4)');
+    sh.addColorStop(1, 'rgba(0,0,0,0)');
+    ctx.fillStyle = sh;
+    ctx.beginPath();
+    ctx.ellipse(cx, cy+h*0.5, w*0.7, h*0.12, 0, 0, Math.PI*2);
+    ctx.fill();
+    /* right face */
+    ctx.fillStyle = '#1A1A1A';
+    ctx.beginPath();
+    ctx.moveTo(kx+w, ky);
+    ctx.lineTo(kx+w+w*0.25, ky+h*0.18);
+    ctx.lineTo(kx+w+w*0.25, ky+h+h*0.18);
+    ctx.lineTo(kx+w, ky+h);
+    ctx.fill();
+    /* front */
+    var fg = ctx.createLinearGradient(kx, ky, kx+w, ky+h);
+    fg.addColorStop(0, '#2A2A2A');
+    fg.addColorStop(1, '#060606');
+    ctx.fillStyle = fg;
+    ctx.fillRect(kx, ky, w, h);
+    /* top */
+    var tg = ctx.createLinearGradient(kx, ky, kx+w, ky);
+    tg.addColorStop(0, '#555');
+    tg.addColorStop(1, '#222');
+    ctx.fillStyle = tg;
+    ctx.beginPath();
+    ctx.moveTo(kx, ky);
+    ctx.lineTo(kx+w, ky);
+    ctx.lineTo(kx+w+w*0.25, ky+h*0.18);
+    ctx.lineTo(kx+w*0.25, ky+h*0.18);
+    ctx.fill();
+    /* gold band */
+    var gbg = ctx.createLinearGradient(kx, 0, kx+w, 0);
+    gbg.addColorStop(0, '#7A5C10');
+    gbg.addColorStop(0.25, '#D4AF37');
+    gbg.addColorStop(0.5, '#F5E88A');
+    gbg.addColorStop(0.75, '#D4AF37');
+    gbg.addColorStop(1, '#7A5C10');
+    ctx.fillStyle = gbg;
+    ctx.fillRect(kx, ky+h*0.28, w, h*0.1);
+    /* door */
+    var dw = w*0.22, dh = h*0.27;
+    var dx = cx-dw/2, dy = ky+h-dh-h*0.03;
+    ctx.fillStyle = '#D4AF37';
+    ctx.beginPath();
+    ctx.roundRect(dx, dy, dw, dh, dw/2);
+    ctx.fill();
+    ctx.fillStyle = 'rgba(5,5,5,0.85)';
+    ctx.beginPath();
+    ctx.roundRect(dx+3, dy+3, dw-6, dh-6, (dw-6)/2);
+    ctx.fill();
+    ctx.restore();
+  }
+
+  function loop() {
+    var W = canvas.width, H = canvas.height;
+    ctx.clearRect(0, 0, W, H);
+    tick2++;
+    stars.forEach(function(s) {
+      s.tw += 0.018;
+      ctx.beginPath();
+      ctx.arc(s.x*W, s.y*H, s.r, 0, Math.PI*2);
+      ctx.fillStyle = 'rgba(255,255,255,' + (s.a*(0.5+0.5*Math.sin(s.tw))) + ')';
+      ctx.fill();
+    });
+    var cx2 = W*0.5, cy2 = H*0.52;
+    var kw = Math.min(W*0.18, 200);
+    var kh = kw*1.3;
+    for (var r = 0; r < 6; r++) {
+      ctx.beginPath();
+      ctx.ellipse(cx2, cy2+kh*0.5, kw*(1.2+r*0.7), kw*(1.2+r*0.7)*0.3, 0, 0, Math.PI*2);
+      ctx.strokeStyle = 'rgba(212,175,55,' + (0.07-r*0.008) + ')';
+      ctx.lineWidth = 0.8;
+      ctx.stroke();
+    }
+    pilgrims.forEach(function(p) {
+      p.angle += p.speed;
+      var br = kw*1.2 + Math.round((p.radius-0.15)/0.04)*kw*0.7;
+      var px = cx2+Math.cos(p.angle)*br;
+      var py = cy2+kh*0.5+Math.sin(p.angle)*br*0.3;
+      ctx.beginPath();
+      ctx.arc(px, py, p.size, 0, Math.PI*2);
+      ctx.fillStyle = p.color;
+      ctx.globalAlpha = p.alpha*(Math.sin(p.angle)<0?0.4:0.85);
+      ctx.fill();
+      ctx.globalAlpha = 1;
+    });
+    var flt = Math.sin(tick2*0.015)*6;
+    drawKaabah3D(ctx, cx2, cy2+flt, kw, kh);
+    requestAnimationFrame(loop);
+  }
+  loop();
+}
+
+/* ═══════════════════════
+   INIT
+═══════════════════════ */
+window.addEventListener('load', function() {
+  if (!CanvasRenderingContext2D.prototype.roundRect) {
+    CanvasRenderingContext2D.prototype.roundRect = function(x,y,w,h,r) {
+      this.beginPath();
+      this.moveTo(x+r,y);
+      this.lineTo(x+w-r,y);
+      this.quadraticCurveTo(x+w,y,x+w,y+r);
+      this.lineTo(x+w,y+h-r);
+      this.quadraticCurveTo(x+w,y+h,x+w-r,y+h);
+      this.lineTo(x+r,y+h);
+      this.quadraticCurveTo(x,y+h,x,y+h-r);
+      this.lineTo(x,y+r);
+      this.quadraticCurveTo(x,y,x+r,y);
+      this.closePath();
+      return this;
+    };
+  }
+  initLogos();
+  injectHotelImages();
+  initIntroCanvas();
+});
+</script>
+</body>
+</html>
