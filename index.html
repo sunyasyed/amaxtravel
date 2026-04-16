@@ -1511,7 +1511,7 @@ function injectHotelImages() {
     var src = img.src || '';
 
     /* Swissôtel Makkah — any reference → kaabah view */
-    if (alt.includes('swissôtel') || alt.includes('swissotel') || alt.includes('al maqam')) {
+    if (alt.includes('swissôtel') || alt.includes('swissotel') || alt.includes('')) {
       img.src = HOTEL_IMGS.swissotel_kaabah_view;
     }
     /* Dar Al Hijra InterContinental Madinah */
@@ -1532,7 +1532,7 @@ function injectHotelImages() {
   /* The 4-column Hajj hotel row uses src from HTML — patch by alt */
   document.querySelectorAll('img').forEach(function(img) {
     var alt = (img.alt || '').toLowerCase();
-    if (alt.includes('swissôtel') || alt.includes('swissotel') || alt.includes('al maqam')) {
+    if (alt.includes('swissôtel') || alt.includes('swissotel') || alt.includes('')) {
       img.src = HOTEL_IMGS.swissotel_kaabah_view;
     }
     if (alt.includes('dar al hijra') && (alt.includes('madinah') || alt.includes('medina'))) {
