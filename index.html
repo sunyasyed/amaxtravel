@@ -1511,7 +1511,7 @@ function injectHotelImages() {
     var src = img.src || '';
 
     /* Swissôtel Makkah — any reference → kaabah view */
-    if (alt.includes('swissôtel') || alt.includes('swissotel') || alt.includes('al maqam')) {
+    if (alt.includes('swissôtel') || alt.includes('swissotel') || alt.includes('Makkah')) {
       img.src = HOTEL_IMGS.swissotel_kaabah_view;
     }
     /* Dar Al Hijra InterContinental Madinah */
@@ -1532,7 +1532,7 @@ function injectHotelImages() {
   /* The 4-column Hajj hotel row uses src from HTML — patch by alt */
   document.querySelectorAll('img').forEach(function(img) {
     var alt = (img.alt || '').toLowerCase();
-    if (alt.includes('swissôtel') || alt.includes('swissotel') || alt.includes('al maqam')) {
+    if (alt.includes('swissôtel') || alt.includes('swissotel') || alt.includes('al Makkah')) {
       img.src = HOTEL_IMGS.swissotel_kaabah_view;
     }
     if (alt.includes('dar al hijra') && (alt.includes('madinah') || alt.includes('medina'))) {
@@ -1549,7 +1549,7 @@ function injectHotelImages() {
     var el = document.getElementById(id);
     if (el) {
       el.style.cssText = 'position:absolute;top:1rem;right:1rem;background:rgba(255,255,255,0.95);backdrop-filter:blur(8px);border-radius:8px;padding:.3rem .7rem;max-width:120px;text-align:center;z-index:5';
-      el.innerHTML = '<div style="font-size:.58rem;font-weight:700;color:#1a1a5e;letter-spacing:.06em;line-height:1.2">swissôtel</div><div style="font-size:.5rem;font-weight:600;color:#B8960C;letter-spacing:.08em">AL MAQAM · MAKKAH</div>';
+      el.innerHTML = '<div style="font-size:.58rem;font-weight:700;color:#1a1a5e;letter-spacing:.06em;line-height:1.2">swissôtel</div><div style="font-size:.5rem;font-weight:600;color:#B8960C;letter-spacing:.08em">Makkah · MAKKAH</div>';
     }
   });
 
